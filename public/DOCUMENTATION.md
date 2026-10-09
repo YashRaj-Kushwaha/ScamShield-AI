@@ -3,10 +3,10 @@
 > **IEEE VIT Bhopal Hackathon 2026 · Build Beyond Boundaries**  
 > **Track 04 · CYBERSECURITY: Problem Statement 04.1 ("The Scam That Almost Worked")**  
 > **Engineering Team: D43M0N$**  
-> - **Aastik Tripathi** (26BCY10090) — Security Architecture & Project Lead  
-> - **Palak Kalra** (26BCY10001) — NLP & Linguistic Intelligence  
-> - **Yash Raj Kushwaha** (26BCE10122) — Full-Stack & Cloud Integration  
-> - **Mangal Nath Yadav** (26BHI10047) — UPI Protocols & QR Pipeline  
+> - **Aastik Tripathi** (26BCY10090)  
+> - **Palak Kalra** (26BCY10001)  
+> - **Yash Raj Kushwaha** (26BCE10122)  
+> - **Mangal Nath Yadav** (26BHI10047)  
 
 ---
 
@@ -159,3 +159,23 @@ npm run build
 npm start
 ```
 The application will be live at `http://localhost:3000`.
+
+---
+
+## 8. Live Threat Stream, SecOps Broadcaster & History Governance
+
+### 8.1 Nationwide Live Threat Stream
+- Real-time WebSocket connection to Firebase Realtime Database (`threat_reports`).
+- Streams newly submitted threat vectors across India with MITRE ATT&CK style indicators of compromise (IOCs).
+- Direct re-inspection bridge allowing citizens and analysts to pass live telemetry into the Scanner.
+
+### 8.2 SecOps Threat Broadcaster
+- Dedicated broadcasting station inside the Admin Console.
+- Enables verified security operations officers to dispatch emergency alerts across all connected citizen devices.
+- Configurable severity metrics, custom threat vectors, and recommended mitigation actions.
+
+### 8.3 Sovereign Scan History Governance
+- **Guest Vault (Read-Only):** Anonymous guests cannot delete scan records to preserve tamper-proof audit trails.
+- **Authenticated Citizens:** Logged-in users retain sovereign ownership to selectively delete or wipe their personal cloud history.
+- **SecOps Administrators:** Equipped with global database purge privileges (`deleteAllScanHistories`) across all nodes.
+

@@ -44,6 +44,7 @@ import {
   verifySocialStory, 
   deleteSocialStory,
   deleteThreatReport,
+  deleteAllScanHistories,
   subscribeToTeamMembers,
   updateTeamMemberInRtdb,
   subscribeToSiteConfig,
@@ -332,6 +333,19 @@ export default function AdminView({ user, onSignIn, language, t }: AdminViewProp
     if (!reportId) return;
     if (confirm("Are you sure you want to permanently remove this threat log from RTDB?")) {
       await deleteThreatReport(reportId);
+    }
+  };
+
+  // Admin Global Purge: Delete all user scans and threat logs
+  const handleAdminPurgeAllScans = async () => {
+    if (confirm("⚠️ CAUTION: Are you sure you want to permanently delete ALL user scan histories and global threat logs across Firebase RTDB? This action is irreversible.")) {
+      const res = await deleteAllScanHistories(user);
+      if (res.success) {
+        setThreatLogs([]);
+        alert("All scan histories and threat logs have been successfully cleared from RTDB.");
+      } else {
+        alert(res.error || "Failed to purge scan records.");
+      }
     }
   };
 
@@ -705,6 +719,15 @@ export default function AdminView({ user, onSignIn, language, t }: AdminViewProp
                 }`}
               >
                 Verified Safe
+              </button>
+
+              <button
+                onClick={handleAdminPurgeAllScans}
+                className="px-3 py-1.5 rounded-xl text-xs font-semibold transition bg-red-500/10 hover:bg-red-500/20 text-red-600 border border-red-500/30 flex items-center space-x-1.5 ml-auto sm:ml-0"
+                title="Wipe all threat logs and user scan records across Firebase RTDB"
+              >
+                <Trash2 className="h-3.5 w-3.5" />
+                <span>Purge All Scans (RTDB)</span>
               </button>
             </div>
 

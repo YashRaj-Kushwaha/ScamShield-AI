@@ -657,6 +657,26 @@ Mixed: Both Devanagari + English characters
 <li>Scan history synced across devices</li>
 <li>User profile stored in Firebase</li>
 </ul>
+<h3>Feature 13: Live Threat Intelligence Stream</h3>
+<ul>
+<li>Dedicated real-time telemetry stream listening to Firebase RTDB (<code>threat_reports</code>)</li>
+<li>Live threat event feed displaying newly reported scam links, SMS traps, and reverse-charge UPI VPAs</li>
+<li>Animated live status ticker and active event counters</li>
+<li>Quick threat inspect action to re-run live IOCs through Scanner</li>
+</ul>
+<h3>Feature 14: SecOps Threat Broadcaster (Admin Console)</h3>
+<ul>
+<li>Authoritative broadcasting console for security analysts and administrators</li>
+<li>Dispatch emergency warnings to all citizen dashboards nationwide in real-time</li>
+<li>Configure custom attack titles, target indicators (URLs, phone VPAs, QR links), anomaly tags, and actionable Zero-Trust defense playbooks</li>
+<li>Instant synchronized push to RTDB (<code>threat_reports</code> and active alerts)</li>
+</ul>
+<h3>Feature 15: Sovereign Scan History Governance &amp; Role-Based Deletion</h3>
+<ul>
+<li><strong>Zero-Trust Audit Integrity:</strong> Unauthenticated guest users cannot delete scan records to prevent anti-forensic tampering</li>
+<li><strong>Citizen Self-Ownership:</strong> Authenticated logged-in users hold sovereign ownership to selectively delete or clear their own scan history (<code>deleteUserScanRecord</code> / <code>clearUserOwnScans</code>)</li>
+<li><strong>SecOps Admin Purge:</strong> Administrators hold authoritative platform-wide deletion privileges (<code>deleteAllScanHistories</code>) to moderate or wipe RTDB telemetry</li>
+</ul>
 <hr>
 <h2>7. Tech Stack Breakdown</h2>
 <h3>For Complete Beginners — What Each Technology Does:</h3>
@@ -1075,39 +1095,29 @@ npm start
 </tr>
 </tbody></table>
 <hr>
-<h2>12. Team Members &amp; Roles</h2>
+<h2>12. Team Members</h2>
 <table>
 <thead>
 <tr>
 <th>Name</th>
 <th>Enrollment</th>
-<th>Role</th>
-<th>Contribution</th>
 </tr>
 </thead>
 <tbody><tr>
 <td><strong>Aastik Tripathi</strong></td>
 <td>26BCY10090</td>
-<td>Security Architecture &amp; Lead</td>
-<td>Overall architecture, URL analyzer, threat scoring, Zero-Trust framework</td>
 </tr>
 <tr>
 <td><strong>Palak Kalra</strong></td>
 <td>26BCY10001</td>
-<td>NLP &amp; Linguistic Intelligence</td>
-<td>Multilingual NLP engine, Hindi/Hinglish detection, urgency scoring</td>
 </tr>
 <tr>
 <td><strong>Yash Raj Kushwaha</strong></td>
 <td>26BCE10122</td>
-<td>Full-Stack &amp; Cloud Integration</td>
-<td>Next.js frontend, Firebase integration, API routes, UI/UX design</td>
 </tr>
 <tr>
 <td><strong>Mangal Nath Yadav</strong></td>
 <td>26BHI10047</td>
-<td>UPI Protocols &amp; QR Pipeline</td>
-<td>QR inspector, reverse-charge detection, UPI intent parsing, jsQR integration</td>
 </tr>
 </tbody></table>
 <hr>

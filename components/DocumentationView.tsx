@@ -21,7 +21,8 @@ import {
   QrCode,
   Globe,
   Terminal,
-  ShieldAlert
+  ShieldAlert,
+  Radio
 } from "lucide-react";
 import { Language } from "@/lib/i18n";
 
@@ -115,28 +116,35 @@ export default function DocumentationView({ language, t }: DocumentationViewProp
           3. 3 Detection Engines
         </button>
         <button
+          onClick={() => scrollToSection("broadcast")}
+          className="px-3 py-1.5 rounded-xl border border-app-border bg-app-surface hover:bg-app-surface-subtle font-medium text-amber-600 hover:text-amber-700 transition whitespace-nowrap flex items-center space-x-1"
+        >
+          <Radio className="h-3 w-3" />
+          <span>4. Broadcast &amp; Live Stream</span>
+        </button>
+        <button
           onClick={() => scrollToSection("benchmark")}
           className="px-3 py-1.5 rounded-xl border border-app-border bg-app-surface hover:bg-app-surface-subtle font-medium text-app-secondary hover:text-app-text transition whitespace-nowrap"
         >
-          4. 98% Benchmark
+          5. 98% Benchmark
         </button>
         <button
           onClick={() => scrollToSection("legal")}
           className="px-3 py-1.5 rounded-xl border border-app-border bg-app-surface hover:bg-app-surface-subtle font-medium text-app-secondary hover:text-app-text transition whitespace-nowrap"
         >
-          5. Legal & Helplines
+          6. Legal &amp; Helplines
         </button>
         <button
           onClick={() => scrollToSection("techstack")}
           className="px-3 py-1.5 rounded-xl border border-app-border bg-app-surface hover:bg-app-surface-subtle font-medium text-app-secondary hover:text-app-text transition whitespace-nowrap"
         >
-          6. Tech Stack & Team
+          7. Tech Stack &amp; Team
         </button>
         <button
           onClick={() => scrollToSection("glossary")}
           className="px-3 py-1.5 rounded-xl border border-app-border bg-app-surface hover:bg-app-surface-subtle font-medium text-app-secondary hover:text-app-text transition whitespace-nowrap"
         >
-          7. Cyber Glossary
+          8. Cyber Glossary
         </button>
       </div>
 
@@ -406,11 +414,57 @@ export default function DocumentationView({ language, t }: DocumentationViewProp
           </div>
         </section>
 
-        {/* SECTION 4: 100-SAMPLE BENCHMARK RESULTS */}
+        {/* SECTION 4: LIVE THREAT STREAM & BROADCAST DISPATCHER */}
+        <section id="broadcast" className="surface-card rounded-2xl p-6 sm:p-7 space-y-4 shadow-2xs scroll-mt-6 border border-app-border">
+          <div className="flex items-center space-x-2 text-app-accent font-bold text-sm border-b border-app-border/80 pb-2.5">
+            <Radio className="h-4 w-4 text-amber-500 animate-pulse" />
+            <h2>4. Live Threat Stream Broadcast &amp; Sovereign Scan History Governance</h2>
+          </div>
+          <div className="text-xs text-app-secondary leading-relaxed space-y-4">
+            <p>
+              To protect Indian citizens from rapidly mutating social engineering campaigns, ScamShield AI integrates a <strong>Real-Time Threat Telemetry Dispatcher</strong> paired with a <strong>Zero-Trust History Governance model</strong>:
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-[11px]">
+              <div className="p-4 rounded-xl bg-app-surface-subtle border border-app-border space-y-2">
+                <div className="flex items-center space-x-1.5 text-amber-500 font-bold">
+                  <Radio className="h-4 w-4" />
+                  <span>Nationwide Live Threat Stream</span>
+                </div>
+                <p className="text-app-muted">
+                  A high-velocity WebSocket stream backed by Firebase RTDB (<code>threat_reports</code>) delivering instant feeds of zero-day threats detected across India. Users can inspect live threat tickers, analyze MITRE-style indicators of compromise (IOCs), and send flagged targets directly into the Scanner.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-app-surface-subtle border border-app-border space-y-2">
+                <div className="flex items-center space-x-1.5 text-purple-500 font-bold">
+                  <ShieldAlert className="h-4 w-4" />
+                  <span>SecOps Threat Broadcaster</span>
+                </div>
+                <p className="text-app-muted">
+                  Authorized security analysts can broadcast emergency warnings to all citizen dashboards nationwide in real-time. Broadcasters configure custom attack titles, target indicators (URLs, phone VPAs, QR links), anomaly tags, and actionable Zero-Trust defense playbooks.
+                </p>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-app-surface-subtle border border-app-border space-y-2">
+              <span className="font-bold text-app-text text-xs uppercase tracking-wide">
+                Role-Based Scan History Governance &amp; Anti-Tampering Protocol
+              </span>
+              <ul className="list-disc list-inside space-y-1.5 text-app-muted font-mono text-[11px]">
+                <li><strong className="text-app-text">Guest Users (Read-Only Vault):</strong> Anonymous guests can scan and review local results, but cannot delete audit trails without authentication to prevent anti-forensic tampering.</li>
+                <li><strong className="text-app-text">Authenticated Citizens:</strong> Logged-in users hold sovereign ownership over their scan records and can selectively delete or purge their personal cloud history.</li>
+                <li><strong className="text-app-text">SecOps Administrators:</strong> Granted full supervisory privileges to moderate flagged reports and execute global RTDB history purges across all network nodes.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 5: 100-SAMPLE BENCHMARK RESULTS */}
         <section id="benchmark" className="surface-card rounded-2xl p-6 sm:p-7 space-y-4 shadow-2xs scroll-mt-6 border border-app-border">
           <div className="flex items-center space-x-2 text-app-accent font-bold text-sm border-b border-app-border/80 pb-2.5">
             <ShieldCheck className="h-4 w-4 text-app-accent" />
-            <h2>4. 100-Sample Test Corpus Benchmark Evaluation (98% Accuracy)</h2>
+            <h2>5. 100-Sample Test Corpus Benchmark Evaluation (98% Accuracy)</h2>
           </div>
           <div className="text-xs text-app-secondary leading-relaxed space-y-4">
             <p>
@@ -457,11 +511,11 @@ export default function DocumentationView({ language, t }: DocumentationViewProp
           </div>
         </section>
 
-        {/* SECTION 5: LEGAL FRAMEWORK & HELPLINES */}
+        {/* SECTION 6: LEGAL FRAMEWORK & HELPLINES */}
         <section id="legal" className="surface-card rounded-2xl p-6 sm:p-7 space-y-4 shadow-2xs scroll-mt-6 border border-app-border">
           <div className="flex items-center space-x-2 text-app-accent font-bold text-sm border-b border-app-border/80 pb-2.5">
             <Scale className="h-4 w-4 text-app-accent" />
-            <h2>5. Statutory Legal Alignment &amp; National Helplines</h2>
+            <h2>6. Statutory Legal Alignment &amp; National Helplines</h2>
           </div>
           <div className="text-xs text-app-secondary leading-relaxed space-y-3">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -528,11 +582,11 @@ export default function DocumentationView({ language, t }: DocumentationViewProp
           </div>
         </section>
 
-        {/* SECTION 6: TECH STACK & TEAM D43M0N$ */}
+        {/* SECTION 7: TECH STACK & TEAM D43M0N$ */}
         <section id="techstack" className="surface-card rounded-2xl p-6 sm:p-7 space-y-4 shadow-2xs scroll-mt-6 border border-app-border">
           <div className="flex items-center space-x-2 text-app-accent font-bold text-sm border-b border-app-border/80 pb-2.5">
             <Layers className="h-4 w-4 text-app-accent" />
-            <h2>6. Modern Tech Stack &amp; Team D43M0N$ Roster</h2>
+            <h2>7. Modern Tech Stack &amp; Team D43M0N$ Roster</h2>
           </div>
           <div className="text-xs text-app-secondary leading-relaxed space-y-4">
             
@@ -588,12 +642,7 @@ export default function DocumentationView({ language, t }: DocumentationViewProp
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="p-3.5 rounded-xl bg-app-surface-subtle border border-app-border space-y-1">
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold text-app-text text-xs">Mangal Nath Yadav</span>
-                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 border border-amber-500/20">
-                      Team Lead
-                    </span>
-                  </div>
+                  <span className="font-bold text-app-text text-xs">Mangal Nath Yadav</span>
                   <p className="text-[11px] font-mono text-app-muted">Reg No: 26BHI10047</p>
                 </div>
 
@@ -616,11 +665,11 @@ export default function DocumentationView({ language, t }: DocumentationViewProp
           </div>
         </section>
 
-        {/* SECTION 7: CYBERSECURITY GLOSSARY */}
+        {/* SECTION 8: CYBERSECURITY GLOSSARY */}
         <section id="glossary" className="surface-card rounded-2xl p-6 sm:p-7 space-y-4 shadow-2xs scroll-mt-6 border border-app-border">
           <div className="flex items-center space-x-2 text-app-accent font-bold text-sm border-b border-app-border/80 pb-2.5">
             <HelpCircle className="h-4 w-4 text-app-accent" />
-            <h2>7. Cybersecurity Glossary for Citizens &amp; Evaluators</h2>
+            <h2>8. Cybersecurity Glossary for Citizens &amp; Evaluators</h2>
           </div>
           <div className="overflow-x-auto rounded-xl border border-app-border text-xs font-mono">
             <table className="w-full text-left">

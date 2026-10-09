@@ -15,9 +15,17 @@ import {
   LogIn,
   Copy,
   Check,
-  Sparkles
+  Sparkles,
+  Lock
 } from "lucide-react";
-import { UserScanRecord, subscribeToUserScans, deleteUserScanRecord } from "@/lib/firebase";
+import { 
+  UserScanRecord, 
+  subscribeToUserScans, 
+  deleteUserScanRecord,
+  deleteAllScanHistories,
+  clearUserOwnScans,
+  isUserAdmin
+} from "@/lib/firebase";
 import { Language } from "@/lib/i18n";
 import { User } from "firebase/auth";
 
@@ -42,6 +50,9 @@ export default function HistoryView({
   const [loading, setLoading] = useState(true);
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
+  const isAdmin = isUserAdmin(user);
+  const isLoggedIn = !!user;
+
   const handleCopyTarget = (id: string, text: string) => {
     navigator.clipboard.writeText(text);
     setCopiedId(id);
@@ -60,7 +71,49 @@ export default function HistoryView({
   }, [targetUserId]);
 
   const handleDelete = async (scanId: string) => {
-    await deleteUserScanRecord(targetUserId, scanId);
+    if (!isLoggedIn) {
+      if (confirm(language === "hi" 
+        ? "केवल लॉग-इन किए गए उपयोगकर्ता ही अपना स्कैन इतिहास हटा सकते हैं। क्या आप अभी साइन इन करना चाहते हैं?"
+        : "Only logged-in users can delete their scan records. Sign in with Google to manage your personal scan history?")) {
+        onSignIn();
+      }
+      return;
+    }
+    const res = await deleteUserScanRecord(targetUserId, scanId, user);
+    if (!res.success && res.error) {
+      alert(res.error);
+    }
+  };
+
+  const handleAdminClearAll = async () => {
+    if (!user || !isAdmin) return;
+    if (confirm(language === "hi"
+      ? "⚠️ एडमिन विशेषाधिकार: क्या आप पूरे प्लेटफॉर्म और RTDB से सभी स्कैन इतिहास स्थायी रूप से हटाना चाहते हैं? इसे वापस नहीं किया जा सकता।"
+      : "⚠️ ADMIN ACTION: Permanently wipe ALL scan histories across the entire platform and Firebase RTDB? This action is irreversible.")) {
+      setLoading(true);
+      const res = await deleteAllScanHistories(user);
+      if (res.success) {
+        setScans([]);
+      } else {
+        alert(res.error || "Failed to clear all scan histories.");
+      }
+      setLoading(false);
+    }
+  };
+
+  const handleClearOwn = async () => {
+    if (!user) {
+      onSignIn();
+      return;
+    }
+    if (confirm(language === "hi"
+      ? "क्या आप अपना व्यक्तिगत स्कैन इतिहास हटाना चाहते हैं?"
+      : "Are you sure you want to clear your personal scan history?")) {
+      setLoading(true);
+      await clearUserOwnScans(user.uid, user);
+      setScans([]);
+      setLoading(false);
+    }
   };
 
   const filteredScans = scans.filter((s) => {
@@ -98,16 +151,42 @@ export default function HistoryView({
           </p>
         </div>
 
-        {/* User Account / Google Sign-in Prompt if guest */}
-        {!user && (
-          <button
-            onClick={onSignIn}
-            className="flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-app-surface hover:bg-app-surface-subtle border border-app-border text-xs font-semibold text-app-text transition shadow-2xs self-start sm:self-auto"
-          >
-            <LogIn className="h-3.5 w-3.5 text-blue-500" />
-            <span>{t.signIn}</span>
-          </button>
-        )}
+        {/* User Account / Action Controls */}
+        <div className="flex items-center space-x-2 self-start sm:self-auto flex-wrap gap-y-2">
+          {isAdmin && (
+            <button
+              onClick={handleAdminClearAll}
+              disabled={loading}
+              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-600 border border-red-500/30 text-xs font-semibold transition shadow-2xs"
+              title="Administrator: Permanently wipe all scan records across the entire platform"
+            >
+              <Trash2 className="h-3.5 w-3.5" />
+              <span>{language === "hi" ? "सभी स्कैन हटाएं (Admin)" : "Clear All History (Admin)"}</span>
+            </button>
+          )}
+
+          {isLoggedIn && !isAdmin && (
+            <button
+              onClick={handleClearOwn}
+              disabled={loading || scans.length === 0}
+              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-app-surface hover:bg-red-500/10 hover:text-red-600 border border-app-border text-app-muted text-xs font-semibold transition shadow-2xs disabled:opacity-40"
+              title="Clear my personal scan history"
+            >
+              <Trash2 className="h-3.5 w-3.5" />
+              <span>{language === "hi" ? "इतिहास साफ करें" : "Clear My History"}</span>
+            </button>
+          )}
+
+          {!isLoggedIn && (
+            <button
+              onClick={onSignIn}
+              className="flex items-center space-x-2 px-3.5 py-1.5 rounded-xl bg-app-surface hover:bg-app-surface-subtle border border-app-border text-xs font-semibold text-app-text transition shadow-2xs"
+            >
+              <LogIn className="h-3.5 w-3.5 text-blue-500" />
+              <span>{t.signIn}</span>
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Guest Notice Banner if not logged in */}
@@ -302,13 +381,23 @@ export default function HistoryView({
                       </div>
                     </div>
 
-                    <button
-                      onClick={() => handleDelete(scan.id)}
-                      className="p-1.5 rounded-lg text-app-muted hover:text-red-500 hover:bg-app-surface-subtle transition"
-                      title="Delete from history"
-                    >
-                      <Trash2 className="h-3.5 w-3.5" />
-                    </button>
+                    {isLoggedIn ? (
+                      <button
+                        onClick={() => handleDelete(scan.id)}
+                        className="p-1.5 rounded-lg text-app-muted hover:text-red-500 hover:bg-app-surface-subtle transition"
+                        title={isAdmin ? "Delete scan record (Admin Privilege)" : "Delete from personal history"}
+                      >
+                        <Trash2 className="h-3.5 w-3.5" />
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => handleDelete(scan.id)}
+                        className="p-1.5 rounded-lg text-app-muted/60 hover:text-amber-500 hover:bg-app-surface-subtle transition flex items-center space-x-1"
+                        title="Sign in required to delete personal scan history"
+                      >
+                        <Lock className="h-3.5 w-3.5" />
+                      </button>
+                    )}
                   </div>
                 </div>
 

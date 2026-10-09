@@ -6,6 +6,7 @@ import {
   set, 
   get, 
   remove,
+  update,
   query, 
   limitToLast, 
   onValue, 
@@ -536,7 +537,42 @@ export function subscribeToUserScans(userId: string, callback: (scans: UserScanR
   }
 }
 
-export async function deleteUserScanRecord(userId: string, scanId: string): Promise<void> {
+export function isUserAdmin(user: User | null): boolean {
+  if (!user || !user.email) return false;
+  const email = user.email.toLowerCase();
+  return (
+    email.includes("admin") ||
+    email.includes("yashraj") ||
+    email.includes("aastik") ||
+    email.includes("mangal") ||
+    email.includes("palak") ||
+    ["26bhi10047", "26bcy10090", "26bcy10001", "26bce10122"].some(reg => email.includes(reg))
+  );
+}
+
+export async function deleteUserScanRecord(
+  userId: string, 
+  scanId: string, 
+  currentUser?: User | null
+): Promise<{ success: boolean; error?: string }> {
+  // If currentUser is provided, enforce access rules:
+  // 1. Unauthenticated/guest users cannot delete
+  if (!currentUser) {
+    const errMsg = "Unauthorized: Only logged-in users can delete scan history records.";
+    console.warn(errMsg);
+    return { success: false, error: errMsg };
+  }
+
+  // 2. Regular users can ONLY delete their own scans (currentUser.uid === userId)
+  // 3. Admin can delete anyone's scan records
+  const isAdmin = isUserAdmin(currentUser);
+  const isOwner = currentUser.uid === userId;
+  if (!isOwner && !isAdmin) {
+    const errMsg = "Unauthorized: You can only delete your own scan history.";
+    console.warn(errMsg);
+    return { success: false, error: errMsg };
+  }
+
   if (localUserScansCache[userId]) {
     localUserScansCache[userId] = localUserScansCache[userId].filter(s => s.id !== scanId);
   }
@@ -560,7 +596,86 @@ export async function deleteUserScanRecord(userId: string, scanId: string): Prom
       console.warn("RTDB delete notice:", err);
     }
   }
+
+  return { success: true };
 }
+
+export async function deleteAllScanHistories(
+  currentUser: User | null
+): Promise<{ success: boolean; error?: string }> {
+  if (!currentUser || !isUserAdmin(currentUser)) {
+    return { success: false, error: "Unauthorized: Only administrators can delete all scan histories." };
+  }
+
+  // Clear local memory caches
+  Object.keys(localUserScansCache).forEach(k => {
+    localUserScansCache[k] = [];
+  });
+
+  // Clear localStorage
+  if (typeof window !== "undefined") {
+    try {
+      for (let i = localStorage.length - 1; i >= 0; i--) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith("scamshield_history_")) {
+          localStorage.removeItem(key);
+        }
+      }
+    } catch (e) {}
+  }
+
+  // Clear RTDB scans across all users
+  if (rtdb) {
+    try {
+      const usersSnap = await withTimeout(get(ref(rtdb, "users")), 3500);
+      if (usersSnap.exists()) {
+        const usersData = usersSnap.val() || {};
+        const updates: Record<string, any> = {};
+        Object.keys(usersData).forEach(uid => {
+          updates[`users/${uid}/scans`] = null;
+        });
+        await withTimeout(update(ref(rtdb), updates), 4000);
+      }
+      // Also clear threat reports node
+      await withTimeout(remove(ref(rtdb, "threat_reports")), 2000);
+    } catch (err) {
+      console.warn("RTDB deleteAllScanHistories error:", err);
+    }
+  }
+
+  return { success: true };
+}
+
+export async function clearUserOwnScans(
+  userId: string,
+  currentUser: User | null
+): Promise<{ success: boolean; error?: string }> {
+  if (!currentUser) {
+    return { success: false, error: "Unauthorized: Please sign in to clear scan history." };
+  }
+  const isAdmin = isUserAdmin(currentUser);
+  if (currentUser.uid !== userId && !isAdmin) {
+    return { success: false, error: "Unauthorized: You can only clear your own scan history." };
+  }
+
+  localUserScansCache[userId] = [];
+  if (typeof window !== "undefined") {
+    try {
+      localStorage.removeItem(`scamshield_history_${userId}`);
+    } catch (e) {}
+  }
+
+  if (rtdb) {
+    try {
+      await withTimeout(remove(ref(rtdb, `users/${userId}/scans`)), 2500);
+    } catch (err) {
+      console.warn("RTDB clearUserOwnScans error:", err);
+    }
+  }
+
+  return { success: true };
+}
+
 
 // -------------------------------------------------------------
 // SOCIAL AWARENESS STORIES (Task 3)

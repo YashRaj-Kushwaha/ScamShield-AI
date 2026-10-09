@@ -331,6 +331,24 @@ Generates 5 security metrics:
 - Scan history synced across devices
 - User profile stored in Firebase
 
+### Feature 13: Live Threat Intelligence Stream
+- Dedicated real-time telemetry stream listening to Firebase RTDB (`threat_reports`)
+- Live threat event feed displaying newly reported scam links, SMS traps, and reverse-charge UPI VPAs
+- Animated live status ticker and active event counters
+- Quick threat inspect action to re-run live IOCs through Scanner
+
+### Feature 14: SecOps Threat Broadcaster (Admin Console)
+- Authoritative broadcasting console for security analysts and administrators
+- Dispatch emergency warnings to all citizen dashboards nationwide in real-time
+- Configure custom attack titles, target indicators (URLs, phone VPAs, QR links), anomaly tags, and actionable Zero-Trust defense playbooks
+- Instant synchronized push to RTDB (`threat_reports` and active alerts)
+
+### Feature 15: Sovereign Scan History Governance & Role-Based Deletion
+- **Zero-Trust Audit Integrity:** Unauthenticated guest users cannot delete scan records to prevent anti-forensic tampering
+- **Citizen Self-Ownership:** Authenticated logged-in users hold sovereign ownership to selectively delete or clear their own scan history (`deleteUserScanRecord` / `clearUserOwnScans`)
+- **SecOps Admin Purge:** Administrators hold authoritative platform-wide deletion privileges (`deleteAllScanHistories`) to moderate or wipe RTDB telemetry
+
+
 ---
 
 ## 7. Tech Stack Breakdown
@@ -516,14 +534,14 @@ The app comes pre-configured with Firebase credentials in [firebase.ts](file:///
 
 ---
 
-## 12. Team Members & Roles
+## 12. Team Members
 
-| Name | Enrollment | Role | Contribution |
-|------|-----------|------|--------------|
-| **Aastik Tripathi** | 26BCY10090 | Security Architecture & Lead | Overall architecture, URL analyzer, threat scoring, Zero-Trust framework |
-| **Palak Kalra** | 26BCY10001 | NLP & Linguistic Intelligence | Multilingual NLP engine, Hindi/Hinglish detection, urgency scoring |
-| **Yash Raj Kushwaha** | 26BCE10122 | Full-Stack & Cloud Integration | Next.js frontend, Firebase integration, API routes, UI/UX design |
-| **Mangal Nath Yadav** | 26BHI10047 | UPI Protocols & QR Pipeline | QR inspector, reverse-charge detection, UPI intent parsing, jsQR integration |
+| Name | Enrollment |
+|------|-----------|
+| **Aastik Tripathi** | 26BCY10090 |
+| **Palak Kalra** | 26BCY10001 |
+| **Yash Raj Kushwaha** | 26BCE10122 |
+| **Mangal Nath Yadav** | 26BHI10047 |
 
 ---
 
