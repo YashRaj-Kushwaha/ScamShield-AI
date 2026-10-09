@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ScamShield AI - Technical Documentation</title>
+<style>
+    @page {
+        size: A4;
+        margin: 18mm 16mm 18mm 16mm;
+    }
+    
+    body {
+        font-family: 'Noto Sans', 'Noto Sans Devanagari', 'Liberation Sans', sans-serif;
+        color: #1e293b;
+        background: #ffffff;
+        line-height: 1.55;
+        font-size: 9.8pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        font-size: 19pt;
+        color: #0f172a;
+        font-weight: 800;
+        margin-top: 0;
+        margin-bottom: 8pt;
+        padding-bottom: 6pt;
+        border-bottom: 2.5pt solid #2563eb;
+        page-break-after: avoid;
+    }
+
+    h2 {
+        font-size: 13.5pt;
+        color: #1e3a8a;
+        font-weight: 700;
+        margin-top: 18pt;
+        margin-bottom: 6pt;
+        padding-bottom: 3pt;
+        border-bottom: 1pt solid #cbd5e1;
+        page-break-after: avoid;
+    }
+
+    h3 {
+        font-size: 11pt;
+        color: #0f172a;
+        font-weight: 700;
+        margin-top: 12pt;
+        margin-bottom: 4pt;
+        page-break-after: avoid;
+    }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 7pt;
+    }
+
+    blockquote {
+        margin: 10pt 0;
+        padding: 8pt 12pt;
+        background-color: #f8fafc;
+        border-left: 4pt solid #2563eb;
+        border-radius: 0 6pt 6pt 0;
+        color: #334155;
+        font-size: 9.5pt;
+        page-break-inside: avoid;
+    }
+
+    blockquote p:last-child {
+        margin-bottom: 0;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 10pt 0 14pt 0;
+        font-size: 9pt;
+        page-break-inside: avoid;
+    }
+
+    th {
+        background-color: #0f172a;
+        color: #ffffff;
+        font-weight: 700;
+        text-align: left;
+        padding: 6pt 8pt;
+        border: 1pt solid #0f172a;
+    }
+
+    td {
+        padding: 5.5pt 8pt;
+        border: 1pt solid #cbd5e1;
+        vertical-align: top;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f8fafc;
+    }
+
+    code {
+        font-family: 'Liberation Mono', 'DejaVu Sans Mono', Consolas, monospace;
+        font-size: 8.5pt;
+        background: #f1f5f9;
+        color: #0f172a;
+        padding: 1.5pt 4pt;
+        border-radius: 3pt;
+        border: 1pt solid #e2e8f0;
+    }
+
+    pre {
+        background: #0f172a;
+        color: #f8fafc;
+        padding: 8pt 10pt;
+        border-radius: 6pt;
+        font-size: 8pt;
+        line-height: 1.4;
+        margin: 8pt 0 12pt 0;
+        page-break-inside: avoid;
+    }
+
+    pre code {
+        background: transparent;
+        color: inherit;
+        border: none;
+        padding: 0;
+    }
+
+    ul, ol {
+        margin-top: 0;
+        margin-bottom: 8pt;
+        padding-left: 18pt;
+    }
+
+    li {
+        margin-bottom: 3pt;
+    }
+
+    hr {
+        border: none;
+        border-top: 1pt solid #e2e8f0;
+        margin: 14pt 0;
+    }
+
+    a {
+        color: #2563eb;
+        text-decoration: none;
+    }
+</style>
+</head>
+<body>
+<h1>📖 ScamShield AI — Complete Technical Documentation</h1>
+<blockquote>
+<p><strong>IEEE VIT Bhopal Hackathon 2026 · Track 04 Cybersecurity</strong>
+<strong>Problem Statement 04.1: &quot;The Scam That Almost Worked&quot;</strong>
+<strong>Team D43M0N$</strong></p>
+</blockquote>
+<hr>
+<h2>Table of Contents</h2>
+<ol>
+<li><a href="#1-what-is-scamshield-ai">What is ScamShield AI?</a></li>
+<li><a href="#2-the-problem-were-solving">The Problem We&#39;re Solving</a></li>
+<li><a href="#3-how-it-works-simple-explanation">How It Works (Simple Explanation)</a></li>
+<li><a href="#4-architecture-overview">Architecture Overview</a></li>
+<li><a href="#5-the-3-detection-engines">The 3 Detection Engines</a></li>
+<li><a href="#6-all-features-explained">All Features Explained</a></li>
+<li><a href="#7-tech-stack-breakdown">Tech Stack Breakdown</a></li>
+<li><a href="#8-file-by-file-code-guide">File-by-File Code Guide</a></li>
+<li><a href="#9-benchmark-results-98-accuracy">Benchmark Results (98% Accuracy)</a></li>
+<li><a href="#10-how-to-run-the-app">How to Run the App</a></li>
+<li><a href="#11-indian-legal-framework--helplines">Indian Legal Framework &amp; Helplines</a></li>
+<li><a href="#12-team-members--roles">Team Members &amp; Roles</a></li>
+<li><a href="#13-glossary-for-beginners">Glossary for Beginners</a></li>
+</ol>
+<hr>
+<h2>1. What is ScamShield AI?</h2>
+<p>ScamShield AI is a <strong>real-time phishing link and QR code threat analyzer</strong> — a web application that helps ordinary Indian citizens check if a link, SMS message, or QR code they received is a <strong>scam</strong> or <strong>legitimate</strong>, <em>before</em> they click on it.</p>
+<h3>In Simple Words:</h3>
+<blockquote>
+<p>Imagine your grandmother receives an SMS saying &quot;Your electricity will be disconnected tonight. Click this link to pay.&quot; ScamShield AI lets her (or you) paste that message, and within 2 seconds, it tells her:</p>
+<ul>
+<li>❌ &quot;This is a SCAM — the message uses fear tactics and the link is fake&quot;</li>
+<li>✅ &quot;This is SAFE — this is an official bank notification&quot;</li>
+</ul>
+</blockquote>
+<h3>Why It Matters:</h3>
+<ul>
+<li>India lost <strong>₹11,333 crore to cyber fraud</strong> in 2023 (RBI Annual Report)</li>
+<li><strong>47% of scams</strong> use fake UPI QR codes or phishing links</li>
+<li>Most victims are <strong>non-technical users</strong> who can&#39;t distinguish real from fake</li>
+<li>There is <strong>no pre-click protection</strong> — all existing tools work <em>after</em> money is lost</li>
+</ul>
+<h3>Our Core Innovation:</h3>
+<p><strong>Pre-Click Zero-Trust Protection</strong> — We analyze threats <em>before</em> the user clicks, not after. We assume every link is guilty until proven innocent (Zero-Trust).</p>
+<hr>
+<h2>2. The Problem We&#39;re Solving</h2>
+<h3>IEEE Problem Statement 04.1: &quot;The Scam That Almost Worked&quot;</h3>
+<p>The problem describes a <strong>4-stage cyber attack</strong> that targets Indian citizens:</p>
+
+    <table style="width:100%; border-collapse:separate; border-spacing:6pt; border:none; margin:14pt 0;">
+        <tr>
+            <td style="width:22%; background:#eff6ff; border:1.5pt solid #3b82f6; border-radius:6pt; padding:8pt; text-align:center; vertical-align:top;">
+                <div style="font-size:7.5pt; font-weight:800; text-transform:uppercase; color:#2563eb; letter-spacing:0.5pt;">Stage 1</div>
+                <div style="font-size:9.5pt; font-weight:700; color:#0f172a; margin:3pt 0;">Initial Contact</div>
+                <div style="font-size:8pt; color:#475569; line-height:1.3;">Unsolicited SMS/WhatsApp from unknown sender</div>
+            </td>
+            <td style="width:4%; border:none; text-align:center; vertical-align:middle; font-size:16pt; font-weight:bold; color:#94a3b8;">&rarr;</td>
+            <td style="width:22%; background:#fffbeb; border:1.5pt solid #f59e0b; border-radius:6pt; padding:8pt; text-align:center; vertical-align:top;">
+                <div style="font-size:7.5pt; font-weight:800; text-transform:uppercase; color:#d97706; letter-spacing:0.5pt;">Stage 2</div>
+                <div style="font-size:9.5pt; font-weight:700; color:#0f172a; margin:3pt 0;">Panic Pressure</div>
+                <div style="font-size:8pt; color:#475569; line-height:1.3;">Manufactured urgency & artificial 24h deadline</div>
+            </td>
+            <td style="width:4%; border:none; text-align:center; vertical-align:middle; font-size:16pt; font-weight:bold; color:#94a3b8;">&rarr;</td>
+            <td style="width:22%; background:#fff1f2; border:1.5pt solid #f43f5e; border-radius:6pt; padding:8pt; text-align:center; vertical-align:top;">
+                <div style="font-size:7.5pt; font-weight:800; text-transform:uppercase; color:#e11d48; letter-spacing:0.5pt;">Stage 3</div>
+                <div style="font-size:9.5pt; font-weight:700; color:#0f172a; margin:3pt 0;">Credential Capture</div>
+                <div style="font-size:8pt; color:#475569; line-height:1.3;">Pixel-perfect bank clone harvesting login/PIN</div>
+            </td>
+            <td style="width:4%; border:none; text-align:center; vertical-align:middle; font-size:16pt; font-weight:bold; color:#94a3b8;">&rarr;</td>
+            <td style="width:22%; background:#fef2f2; border:1.5pt solid #dc2626; border-radius:6pt; padding:8pt; text-align:center; vertical-align:top;">
+                <div style="font-size:7.5pt; font-weight:800; text-transform:uppercase; color:#b91c1c; letter-spacing:0.5pt;">Stage 4</div>
+                <div style="font-size:9.5pt; font-weight:700; color:#0f172a; margin:3pt 0;">Capital Siphon</div>
+                <div style="font-size:8pt; color:#475569; line-height:1.3;">Instant UPI drain to secondary mule account</div>
+            </td>
+        </tr>
+    </table>
+    
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>What Happens</th>
+<th>Real Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1. Initial Contact</strong></td>
+<td>Victim receives SMS/WhatsApp from unknown number</td>
+<td>&quot;Dear SBI User, your YONO account is blocked&quot;</td>
+</tr>
+<tr>
+<td><strong>2. Psychological Pressure</strong></td>
+<td>Message creates fear &amp; urgency</td>
+<td>&quot;Update KYC within 24 hours or ₹5,000 fine&quot;</td>
+</tr>
+<tr>
+<td><strong>3. Credential Harvesting</strong></td>
+<td>Victim clicks fake link that looks like real bank</td>
+<td><code>sbl-kyc-update.xyz</code> (looks like SBI but is fake)</td>
+</tr>
+<tr>
+<td><strong>4. Capital Extraction</strong></td>
+<td>Scammer steals UPI PIN/OTP, transfers money</td>
+<td>Irreversible ₹50,000 UPI transfer</td>
+</tr>
+</tbody></table>
+<h3>What ScamShield Does:</h3>
+<p>We intercept at <strong>Stage 2-3</strong> — <em>before</em> the victim enters any credentials or scans any QR code.</p>
+<hr>
+<h2>3. How It Works (Simple Explanation)</h2>
+<p>ScamShield has <strong>3 scanning modes</strong>. Think of them as 3 security guards, each checking a different thing:</p>
+<h3>🔗 Guard 1: Website Link Scanner</h3>
+<p><strong>What it checks:</strong> When you paste a URL like <code>http://sbl-kyc-update.xyz/login.php</code></p>
+<p>It looks for:</p>
+<ul>
+<li>Is the domain name misspelling a real brand? (SBI → SBL = typosquatting!)</li>
+<li>Is it using a suspicious domain ending? (.xyz, .top, .buzz = high risk)</li>
+<li>Is it using a raw IP address instead of a name? (Like <code>192.168.10.55</code>)</li>
+<li>Does the URL contain scary words? (kyc, blocked, verify, urgent)</li>
+<li>Is it using HTTPS (secure) or HTTP (insecure)?</li>
+<li>Is the domain new (less than 7 days old)?</li>
+</ul>
+<h3>💬 Guard 2: SMS/Message NLP Analyzer</h3>
+<p><strong>What it checks:</strong> When you paste a text message (works in <strong>English, Hindi, and Hinglish</strong>)</p>
+<p>It looks for:</p>
+<ul>
+<li><strong>Urgency triggers:</strong> &quot;immediately&quot;, &quot;तुरंत&quot;, &quot;24 hours&quot;, &quot;आज रात&quot;</li>
+<li><strong>Fear tactics:</strong> &quot;blocked&quot;, &quot;suspended&quot;, &quot;काट दी जाएगी&quot;</li>
+<li><strong>Authority impersonation:</strong> Is it pretending to be SBI? RBI? Electricity Board? TRAI?</li>
+<li><strong>Scam category:</strong> Is this a KYC fraud? Digital arrest? Lottery bait? Job scam?</li>
+</ul>
+<h3>📱 Guard 3: QR Code &amp; UPI Inspector</h3>
+<p><strong>What it checks:</strong> When you paste or upload a QR code image</p>
+<p>It looks for:</p>
+<ul>
+<li><strong>Reverse-charge scam:</strong> QR says &quot;Scan to receive ₹5,000 cashback&quot; but actually <em>debits</em> your money</li>
+<li><strong>VPA masquerade:</strong> Claims to be &quot;Electricity Department&quot; but money goes to <code>randomguy@ybl</code> (personal account)</li>
+<li><strong>Malware links:</strong> QR contains a link to download a <code>.apk</code> virus</li>
+<li><strong>Hardcoded high amounts:</strong> QR has ₹5,000+ pre-filled</li>
+</ul>
+<hr>
+<h2>4. Architecture Overview</h2>
+
+    <table style="width:100%; border-collapse:collapse; margin:14pt 0; border:1.5pt solid #cbd5e1; border-radius:8pt; background:#f8fafc;">
+        <tr>
+            <td style="padding:10pt; border:none;">
+                <div style="background:#ffffff; border:1.5pt solid #bfdbfe; border-radius:6pt; padding:8pt; margin-bottom:8pt;">
+                    <div style="font-size:8pt; font-weight:800; text-transform:uppercase; color:#1e40af; letter-spacing:0.5pt; margin-bottom:5pt;">
+                        &#9654; FRONTEND LAYER (Next.js 15 &bull; React 19 &bull; TypeScript &bull; Tailwind CSS)
+                    </div>
+                    <table style="width:100%; border-collapse:separate; border-spacing:4pt; border:none; margin:0;">
+                        <tr>
+                            <td style="background:#f1f5f9; border:1pt solid #cbd5e1; border-radius:4pt; padding:4pt 6pt; text-align:center; font-size:8pt; font-weight:600;">Threat Scanner View</td>
+                            <td style="background:#f1f5f9; border:1pt solid #cbd5e1; border-radius:4pt; padding:4pt 6pt; text-align:center; font-size:8pt; font-weight:600;">Attack Simulator</td>
+                            <td style="background:#f1f5f9; border:1pt solid #cbd5e1; border-radius:4pt; padding:4pt 6pt; text-align:center; font-size:8pt; font-weight:600;">Scan History Vault</td>
+                            <td style="background:#f1f5f9; border:1pt solid #cbd5e1; border-radius:4pt; padding:4pt 6pt; text-align:center; font-size:8pt; font-weight:600;">Awareness Stories</td>
+                            <td style="background:#f1f5f9; border:1pt solid #cbd5e1; border-radius:4pt; padding:4pt 6pt; text-align:center; font-size:8pt; font-weight:600;">Admin Console</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div style="text-align:center; font-size:9pt; font-weight:bold; color:#475569; margin:4pt 0;">
+                    &darr; REST API Endpoints (/api/analyze &bull; /api/benchmark &bull; /api/reports) &darr;
+                </div>
+
+                <div style="background:#dbeafe; border:1.5pt solid #3b82f6; border-radius:6pt; padding:8pt; margin-bottom:8pt; text-align:center;">
+                    <div style="font-size:8pt; font-weight:800; text-transform:uppercase; color:#1e3a8a; letter-spacing:0.5pt; margin-bottom:2pt;">
+                        &#9654; THREAT SYNTHESIS LAYER
+                    </div>
+                    <div style="font-size:10pt; font-weight:800; color:#1e3a8a;">
+                        Omni Threat Scorer Engine (Zero-Trust 0-100 Synthesis Matrix)
+                    </div>
+                </div>
+
+                <div style="text-align:center; font-size:9pt; font-weight:bold; color:#475569; margin:4pt 0;">
+                    &darr; Multi-Vector Static & Linguistic Analysis &darr;
+                </div>
+
+                <table style="width:100%; border-collapse:separate; border-spacing:6pt; border:none; margin:0;">
+                    <tr>
+                        <td style="width:33%; background:#ecfdf5; border:1.5pt solid #10b981; border-radius:6pt; padding:8pt; text-align:center; vertical-align:top;">
+                            <div style="font-size:7.5pt; font-weight:800; text-transform:uppercase; color:#065f46;">Engine 1</div>
+                            <div style="font-size:9pt; font-weight:700; color:#064e3b; margin:2pt 0;">Link Inspector</div>
+                            <div style="font-size:7.5pt; color:#047857;">Typosquatting &bull; Punycode &bull; TLD Risk &bull; SSL Trust</div>
+                        </td>
+                        <td style="width:33%; background:#f5f3ff; border:1.5pt solid #8b5cf6; border-radius:6pt; padding:8pt; text-align:center; vertical-align:top;">
+                            <div style="font-size:7.5pt; font-weight:800; text-transform:uppercase; color:#5b21b6;">Engine 2</div>
+                            <div style="font-size:9pt; font-weight:700; color:#4c1d95; margin:2pt 0;">Multilingual NLP</div>
+                            <div style="font-size:7.5pt; color:#6d28d9;">Urgency Heuristics &bull; Hindi/Hinglish &bull; Authority Impersonation</div>
+                        </td>
+                        <td style="width:33%; background:#fff7ed; border:1.5pt solid #f97316; border-radius:6pt; padding:8pt; text-align:center; vertical-align:top;">
+                            <div style="font-size:7.5pt; font-weight:800; text-transform:uppercase; color:#9a3412;">Engine 3</div>
+                            <div style="font-size:9pt; font-weight:700; color:#7c2d12; margin:2pt 0;">UPI & QR Sentinel</div>
+                            <div style="font-size:7.5pt; color:#c2410c;">Reverse-Debit Trap &bull; VPA Masquerade &bull; jsQR Client Decode</div>
+                        </td>
+                    </tr>
+                </table>
+
+                <div style="text-align:center; font-size:9pt; font-weight:bold; color:#475569; margin:4pt 0;">
+                    &darr; Real-Time Data Sync & Fallback Storage &darr;
+                </div>
+
+                <div style="background:#fef3c7; border:1.5pt solid #f59e0b; border-radius:6pt; padding:8pt; text-align:center;">
+                    <div style="font-size:8pt; font-weight:800; text-transform:uppercase; color:#92400e; letter-spacing:0.5pt; margin-bottom:2pt;">
+                        &#9654; DATA LAYER (Firebase RTDB WebSocket Sync &bull; Google Auth &bull; LocalStorage Fallback)
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    
+<h3>How Data Flows:</h3>
+<ol>
+<li>User pastes a link/message/QR in the <strong>Scanner View</strong></li>
+<li>Frontend sends a POST request to <code>/api/analyze</code></li>
+<li>The API runs the appropriate <strong>Detection Engine</strong> (URL/NLP/QR)</li>
+<li>The <strong>Omni Threat Scorer</strong> combines all results into a single risk score</li>
+<li>Results are displayed with a color-coded verdict card</li>
+<li>Scan is saved to <strong>Firebase Realtime Database</strong> (if user is logged in)</li>
+</ol>
+<hr>
+<h2>5. The 3 Detection Engines</h2>
+<h3>Engine 1: URL Analyzer (<a href="file:///home/z/Downloads/psychic-octo-meme-main/lib/analyzers/urlAnalyzer.ts">urlAnalyzer.ts</a>)</h3>
+<p>This is a <strong>heuristic scoring engine</strong> that assigns points to suspicious URL characteristics:</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Points Added</th>
+<th>What It Detects</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Raw IP as hostname</td>
+<td>+45</td>
+<td><code>http://192.168.10.55/icici/login</code></td>
+</tr>
+<tr>
+<td>Homograph/Punycode attack</td>
+<td>+40</td>
+<td>Unicode chars that look like English</td>
+</tr>
+<tr>
+<td>Suspicious TLD</td>
+<td>+25</td>
+<td><code>.xyz</code>, <code>.top</code>, <code>.buzz</code>, <code>.club</code>, etc.</td>
+</tr>
+<tr>
+<td>Excessive subdomains</td>
+<td>+20</td>
+<td><code>login.secure.bank.sbi.fake.xyz</code></td>
+</tr>
+<tr>
+<td>Brand impersonation</td>
+<td>+45</td>
+<td>URL contains &quot;sbi&quot; but isn&#39;t <code>sbi.co.in</code></td>
+</tr>
+<tr>
+<td>Phishing keywords</td>
+<td>+10-30</td>
+<td>&quot;kyc&quot;, &quot;verify&quot;, &quot;blocked&quot;, &quot;otp&quot;</td>
+</tr>
+<tr>
+<td>No HTTPS</td>
+<td>+25</td>
+<td><code>http://</code> instead of <code>https://</code></td>
+</tr>
+<tr>
+<td>New domain</td>
+<td>+25</td>
+<td>Domain created less than 7 days ago</td>
+</tr>
+<tr>
+<td><strong>Official domain detected</strong></td>
+<td><strong>-50</strong></td>
+<td>Verified: <code>onlinesbi.sbi</code>, <code>hdfcbank.com</code></td>
+</tr>
+</tbody></table>
+<p><strong>Risk Tiers:</strong></p>
+<ul>
+<li>Score 0-29 → ✅ SAFE</li>
+<li>Score 30-64 → ⚠️ SUSPICIOUS</li>
+<li>Score 65-100 → ❌ HIGH_RISK</li>
+</ul>
+<p><strong>Brands Protected:</strong> SBI, HDFC, ICICI, PNB, Paytm, PhonePe, Google Pay, BESCOM, India Post, RBI, TRAI</p>
+<hr>
+<h3>Engine 2: NLP (Natural Language Processing) Engine (<a href="file:///home/z/Downloads/psychic-octo-meme-main/lib/analyzers/nlpEngine.ts">nlpEngine.ts</a>)</h3>
+<p>This engine analyzes the <strong>text content</strong> of SMS/WhatsApp messages.</p>
+<p><strong>Step 1: Language Detection</strong></p>
+<pre><code>Hindi: Uses Devanagari script (Unicode range \u0900-\u097F)
+Hinglish: Contains romanized Hindi words like &quot;turant&quot;, &quot;jayega&quot;, &quot;bijli&quot;
+English: Default
+Mixed: Both Devanagari + English characters
+</code></pre>
+<p><strong>Step 2: Urgency Scoring</strong> (Panic words with weighted points)</p>
+<table>
+<thead>
+<tr>
+<th>Trigger Word</th>
+<th>Points</th>
+<th>Language</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&quot;within 24 hours&quot;</td>
+<td>35</td>
+<td>English</td>
+</tr>
+<tr>
+<td>&quot;काट दी जाएगी&quot; (will be cut)</td>
+<td>35</td>
+<td>Hindi</td>
+</tr>
+<tr>
+<td>&quot;antim chetavani&quot; (final warning)</td>
+<td>35</td>
+<td>Hinglish</td>
+</tr>
+<tr>
+<td>&quot;blocked&quot;</td>
+<td>30</td>
+<td>English</td>
+</tr>
+<tr>
+<td>&quot;aaj raat&quot; (tonight)</td>
+<td>30</td>
+<td>Hinglish</td>
+</tr>
+<tr>
+<td>&quot;तुरंत&quot; (immediately)</td>
+<td>25</td>
+<td>Hindi</td>
+</tr>
+</tbody></table>
+<p><strong>Step 3: Authority Impersonation Detection</strong></p>
+<p>Detects if message pretends to be from: SBI/YONO, RBI, Electricity Board, TRAI, India Post, Police/CBI, HDFC, Income Tax</p>
+<p><strong>Step 4: Scam Category Classification</strong></p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Example Pattern</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>KYC_EXPIRY_FRAUD</code></td>
+<td>&quot;kyc&quot;, &quot;pan card update&quot;, &quot;account block&quot;</td>
+</tr>
+<tr>
+<td><code>ELECTRICITY_UTILITY_SCAM</code></td>
+<td>&quot;bijli kat&quot;, &quot;power disconnected&quot;, &quot;बिजली बिल&quot;</td>
+</tr>
+<tr>
+<td><code>REVERSE_UPI_COLLECT</code></td>
+<td>&quot;scan to receive&quot;, &quot;enter pin to get&quot;</td>
+</tr>
+<tr>
+<td><code>DIGITAL_ARREST_IMPERSONATION</code></td>
+<td>&quot;CBI&quot;, &quot;digital arrest&quot;, &quot;narcotics&quot;</td>
+</tr>
+<tr>
+<td><code>JOB_TASK_FRAUD</code></td>
+<td>&quot;earn per day&quot;, &quot;like youtube videos&quot;</td>
+</tr>
+<tr>
+<td><code>LOTTERY_REWARD_BAIT</code></td>
+<td>&quot;KBC lottery&quot;, &quot;won crore&quot;, &quot;lucky winner&quot;</td>
+</tr>
+<tr>
+<td><code>LEGITIMATE_NOTIFICATION</code></td>
+<td>&quot;debited by&quot;, &quot;credited by&quot; (no links/urgency)</td>
+</tr>
+</tbody></table>
+<p><strong>Composite Score Formula:</strong></p>
+<pre><code>compositeNlpScore = (urgencyScore × 0.45) + (impersonationScore × 0.45) + (triggerCount × 5)
+</code></pre>
+<hr>
+<h3>Engine 3: QR Code &amp; UPI Inspector (<a href="file:///home/z/Downloads/psychic-octo-meme-main/lib/analyzers/qrInspector.ts">qrInspector.ts</a>)</h3>
+<p>Parses UPI intent URIs and checks for fraud patterns.</p>
+<p><strong>UPI URI Format:</strong> <code>upi://pay?pa=payee@bank&amp;pn=Name&amp;am=Amount&amp;tn=Note</code></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pa</code></td>
+<td>Payee VPA (UPI address)</td>
+<td><code>scammer89@ybl</code></td>
+</tr>
+<tr>
+<td><code>pn</code></td>
+<td>Payee Name</td>
+<td><code>SBI Refund Dept</code></td>
+</tr>
+<tr>
+<td><code>am</code></td>
+<td>Amount</td>
+<td><code>5000</code></td>
+</tr>
+<tr>
+<td><code>tn</code></td>
+<td>Transaction Note</td>
+<td><code>Scan to Receive Cashback</code></td>
+</tr>
+</tbody></table>
+<p><strong>Critical Detection: Reverse-QR Scam</strong></p>
+<blockquote>
+<p>🚨 In UPI, <strong>you NEVER scan a QR to RECEIVE money</strong>. Scanning a QR always DEBITS. If the note says &quot;Receive&quot; or &quot;Cashback&quot; or &quot;Refund&quot; — it&#39;s a 100% scam.</p>
+</blockquote>
+<p><strong>VPA Masquerade Detection:</strong></p>
+<ul>
+<li>Name claims &quot;Electricity Department&quot; but VPA is <code>randomguy@ybl</code> (personal handle)</li>
+<li>Personal handles: <code>@okhdfcbank</code>, <code>@okaxis</code>, <code>@oksbi</code>, <code>@ybl</code>, <code>@paytm</code></li>
+</ul>
+<hr>
+<h3>The Omni Threat Scorer (<a href="file:///home/z/Downloads/psychic-octo-meme-main/lib/analyzers/threatScorer.ts">threatScorer.ts</a>)</h3>
+<p>Combines all 3 engines into a <strong>single unified threat report</strong>:</p>
+<pre><code>overallScore = (messageScore × 0.40) + (urlScore × 0.35) + (qrScore × 0.35)
+</code></pre>
+<p>Generates 5 security metrics:</p>
+<ol>
+<li><strong>Domain Trust</strong> (0-100): How trustworthy is the domain?</li>
+<li><strong>Protocol Security</strong> (0-100): Is encryption in place?</li>
+<li><strong>Linguistic Urgency</strong> (0-100): How much panic does the message create?</li>
+<li><strong>Impersonation Risk</strong> (0-100): Is someone pretending to be an authority?</li>
+<li><strong>Zero-Trust Score</strong> (0-100): Overall trust level (100 = fully verified)</li>
+</ol>
+<hr>
+<h2>6. All Features Explained</h2>
+<h3>Feature 1: Threat Scanner (Main Feature)</h3>
+<ul>
+<li><strong>3 scanning modes:</strong> URL, Message, QR</li>
+<li><strong>4 preset demo cards</strong> for quick hackathon testing</li>
+<li><strong>Real-time analysis</strong> with animated forensic pipeline UI</li>
+<li><strong>Color-coded verdict cards</strong> (Red/Amber/Green)</li>
+<li><strong>Bilingual explanations</strong> in English and Hindi</li>
+<li>Results saved to Firebase automatically</li>
+</ul>
+<h3>Feature 2: Attack Simulator</h3>
+<ul>
+<li>Visual walkthrough of the <strong>4-stage scam anatomy</strong></li>
+<li>Shows exactly where ScamShield intercepts the attack</li>
+<li>Educational tool for understanding how scams work</li>
+</ul>
+<h3>Feature 3: Scan History</h3>
+<ul>
+<li>Personal vault of all previous scans</li>
+<li>Synced to <strong>Firebase Realtime Database</strong> via WebSocket</li>
+<li>Filter by: All Scans, Scams Blocked, Verified Safe</li>
+<li>One-click re-inspect from history</li>
+<li>Also saved to <strong>localStorage</strong> for offline access</li>
+</ul>
+<h3>Feature 4: Community Scam Stories</h3>
+<ul>
+<li>Citizens share real scam experiences</li>
+<li>Categories: UPI Fraud, Phishing Link, Electricity Bill, WhatsApp Call, Job Scam, Customs Parcel</li>
+<li>Like/Helpful voting system</li>
+<li>Admin verification badges</li>
+</ul>
+<h3>Feature 5: Documentation View</h3>
+<ul>
+<li>In-app documentation with downloadable <code>.docx</code> and <code>.md</code> files</li>
+<li>Covers architecture, engines, benchmarks, legal framework</li>
+</ul>
+<h3>Feature 6: About Team</h3>
+<ul>
+<li>Team member profiles with roles</li>
+</ul>
+<h3>Feature 7: Admin Console</h3>
+<ul>
+<li>User account management</li>
+<li>Threat scan log monitoring</li>
+<li>Stories moderation (verify/delete)</li>
+<li>Role management (admin/analyst/citizen)</li>
+</ul>
+<h3>Feature 8: AI Advisor Modal</h3>
+<ul>
+<li>Slide-over panel for cybersecurity guidance</li>
+<li>Context-aware help</li>
+</ul>
+<h3>Feature 9: Multi-Language Support</h3>
+<ul>
+<li>Complete English and Hindi translations</li>
+<li>All UI labels, placeholders, results available in both languages</li>
+</ul>
+<h3>Feature 10: 5 Color Themes</h3>
+<ol>
+<li>⚪ <strong>Clean Light</strong> — Default white theme</li>
+<li>🟢 <strong>Glass Mint</strong> — Calming green theme</li>
+<li>🟣 <strong>Lavender Frost</strong> — Purple theme</li>
+<li>🟡 <strong>Solar Amber</strong> — Warm yellow theme</li>
+<li>⚫ <strong>Obsidian Dark</strong> — Dark cybersecurity terminal theme</li>
+</ol>
+<h3>Feature 11: QR Image Reader</h3>
+<ul>
+<li>Upload any QR code image (PNG, JPG)</li>
+<li>Client-side decoding using <code>jsQR</code> library</li>
+<li>No server upload needed (privacy preserved)</li>
+<li>Drag &amp; drop or file picker</li>
+</ul>
+<h3>Feature 12: Google Authentication</h3>
+<ul>
+<li>Sign in with Google account</li>
+<li>Scan history synced across devices</li>
+<li>User profile stored in Firebase</li>
+</ul>
+<hr>
+<h2>7. Tech Stack Breakdown</h2>
+<h3>For Complete Beginners — What Each Technology Does:</h3>
+<table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>What It Is</th>
+<th>Why We Use It</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Next.js 15</strong></td>
+<td>A framework for building web apps</td>
+<td>Gives us server-side rendering, API routes, and fast page loads</td>
+</tr>
+<tr>
+<td><strong>React 19</strong></td>
+<td>A library for building UI</td>
+<td>Lets us create interactive components</td>
+</tr>
+<tr>
+<td><strong>TypeScript 5.8</strong></td>
+<td>JavaScript with types</td>
+<td>Catches bugs before runtime</td>
+</tr>
+<tr>
+<td><strong>Tailwind CSS</strong></td>
+<td>A utility CSS framework</td>
+<td>Makes styling fast with class names</td>
+</tr>
+<tr>
+<td><strong>Firebase Realtime Database</strong></td>
+<td>A cloud database by Google</td>
+<td>Stores scans, stories, and user data with live sync</td>
+</tr>
+<tr>
+<td><strong>Firebase Auth</strong></td>
+<td>Google authentication</td>
+<td>Lets users sign in with their Google account</td>
+</tr>
+<tr>
+<td><strong>Firebase Analytics</strong></td>
+<td>Usage tracking</td>
+<td>Tracks how people use the app</td>
+</tr>
+<tr>
+<td><strong>jsQR</strong></td>
+<td>QR code decoder library</td>
+<td>Reads QR codes from uploaded images</td>
+</tr>
+<tr>
+<td><strong>Lucide React</strong></td>
+<td>Icon library</td>
+<td>Provides all the icons in the UI</td>
+</tr>
+</tbody></table>
+<h3>Package Dependencies (<a href="file:///home/z/Downloads/psychic-octo-meme-main/package.json">package.json</a>):</h3>
+<ul>
+<li><code>next</code> — Web framework</li>
+<li><code>react</code> / <code>react-dom</code> — UI library</li>
+<li><code>firebase</code> — Backend services (database, auth, analytics)</li>
+<li><code>jsqr</code> — Client-side QR code reading</li>
+<li><code>lucide-react</code> — Icon components</li>
+<li><code>tailwindcss</code> — CSS framework</li>
+<li><code>typescript</code> — Type-safe JavaScript</li>
+</ul>
+<hr>
+<h2>8. File-by-File Code Guide</h2>
+<h3>📁 Root Files</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/package.json">package.json</a></td>
+<td>Lists all dependencies and scripts (<code>npm run dev</code>)</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/tsconfig.json">tsconfig.json</a></td>
+<td>TypeScript configuration</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/tailwind.config.ts">tailwind.config.ts</a></td>
+<td>Tailwind CSS configuration with custom theme tokens</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/next.config.mjs">next.config.mjs</a></td>
+<td>Next.js configuration</td>
+</tr>
+</tbody></table>
+<h3>📁 <code>app/</code> — Next.js App Router</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/app/page.tsx">page.tsx</a></td>
+<td><strong>Main page</strong> — Controls all tab navigation, auth state, theme switching</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/app/layout.tsx">layout.tsx</a></td>
+<td>Root HTML layout with metadata and fonts</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/app/globals.css">globals.css</a></td>
+<td>All CSS variables for 5 themes, animations, glassmorphism</td>
+</tr>
+</tbody></table>
+<h3>📁 <code>app/api/</code> — Server-Side API Routes</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/app/api/analyze/route.ts">analyze/route.ts</a></td>
+<td><strong>Core API</strong> — Receives scan requests, runs detection engines, saves to Firebase</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/app/api/benchmark/route.ts">benchmark/route.ts</a></td>
+<td>Runs the 100-sample benchmark test suite</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/app/api/reports/route.ts">reports/route.ts</a></td>
+<td>Fetches recent threat reports from Firebase</td>
+</tr>
+</tbody></table>
+<h3>📁 <code>lib/analyzers/</code> — Detection Engine Core</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/lib/analyzers/urlAnalyzer.ts">urlAnalyzer.ts</a></td>
+<td><strong>Engine 1</strong> — URL heuristic analysis (typosquatting, TLDs, brand impersonation)</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/lib/analyzers/nlpEngine.ts">nlpEngine.ts</a></td>
+<td><strong>Engine 2</strong> — Multilingual NLP message analysis (urgency, impersonation, categories)</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/lib/analyzers/qrInspector.ts">qrInspector.ts</a></td>
+<td><strong>Engine 3</strong> — QR code &amp; UPI intent analysis (reverse-charge scam, VPA masquerade)</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/lib/analyzers/threatScorer.ts">threatScorer.ts</a></td>
+<td><strong>Omni Scorer</strong> — Combines all 3 engines into unified threat report</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/lib/analyzers/dataset.ts">dataset.ts</a></td>
+<td><strong>Benchmark</strong> — 100 test samples (50 scam + 50 legit) with accuracy metrics</td>
+</tr>
+</tbody></table>
+<h3>📁 <code>lib/</code> — Utilities</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/lib/firebase.ts">firebase.ts</a></td>
+<td>Firebase initialization, all CRUD operations for reports, scans, stories, users</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/lib/i18n.ts">i18n.ts</a></td>
+<td>English + Hindi translations dictionary (300+ translation keys)</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/lib/qrDecoder.ts">qrDecoder.ts</a></td>
+<td>Client-side QR image decoding using jsQR + HTML5 Canvas</td>
+</tr>
+</tbody></table>
+<h3>📁 <code>components/</code> — React UI Components</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/components/ScannerView.tsx">ScannerView.tsx</a></td>
+<td><strong>Main scanner</strong> — Input fields, preset cards, analysis trigger, verdict display</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/components/AttackSimulator.tsx">AttackSimulator.tsx</a></td>
+<td>4-stage scam anatomy visualization</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/components/HistoryView.tsx">HistoryView.tsx</a></td>
+<td>User&#39;s scan history with filters and re-inspect</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/components/SocialView.tsx">SocialView.tsx</a></td>
+<td>Community scam stories wall</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/components/DocumentationView.tsx">DocumentationView.tsx</a></td>
+<td>In-app documentation with downloads</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/components/AboutView.tsx">AboutView.tsx</a></td>
+<td>Team member profiles</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/components/AdminView.tsx">AdminView.tsx</a></td>
+<td>Admin operations console</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/components/Sidebar.tsx">Sidebar.tsx</a></td>
+<td>Collapsible navigation sidebar with theme switcher</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/components/TopHeader.tsx">TopHeader.tsx</a></td>
+<td>Top header with greeting and status</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/components/AiAdvisorModal.tsx">AiAdvisorModal.tsx</a></td>
+<td>AI cybersecurity advisor slide-over</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/components/TelemetryBenchmark.tsx">TelemetryBenchmark.tsx</a></td>
+<td>Benchmark results visualization</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/components/QuickActionGrid.tsx">QuickActionGrid.tsx</a></td>
+<td>Quick action cards grid</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/components/TwoColumnSection.tsx">TwoColumnSection.tsx</a></td>
+<td>Two-column layout with threat stream + defense engines</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/components/ProjectDossier.tsx">ProjectDossier.tsx</a></td>
+<td>Project overview dossier</td>
+</tr>
+<tr>
+<td><a href="file:///home/z/Downloads/psychic-octo-meme-main/components/ViewSkeleton.tsx">ViewSkeleton.tsx</a></td>
+<td>Loading skeleton placeholders for lazy-loaded views</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>9. Benchmark Results (98% Accuracy)</h2>
+<h3>Test Dataset</h3>
+<ul>
+<li><strong>100 total samples</strong> (50 scam + 50 legitimate)</li>
+<li>Covers URLs, SMS messages, and QR codes</li>
+<li>Includes English, Hindi, and Hinglish content</li>
+</ul>
+<h3>Confusion Matrix</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Predicted SCAM</th>
+<th>Predicted LEGIT</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Actually SCAM</strong></td>
+<td>~49 (True Positive)</td>
+<td>~1 (False Negative)</td>
+</tr>
+<tr>
+<td><strong>Actually LEGIT</strong></td>
+<td>~1 (False Positive)</td>
+<td>~49 (True Negative)</td>
+</tr>
+</tbody></table>
+<h3>Metrics</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Score</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Accuracy</strong></td>
+<td>98%</td>
+<td>Correctly classified 98 out of 100</td>
+</tr>
+<tr>
+<td><strong>Precision</strong></td>
+<td>98%</td>
+<td>When we say &quot;SCAM&quot;, we&#39;re right 98% of the time</td>
+</tr>
+<tr>
+<td><strong>Recall</strong></td>
+<td>98%</td>
+<td>We catch 98% of all real scams</td>
+</tr>
+<tr>
+<td><strong>F1 Score</strong></td>
+<td>98%</td>
+<td>Harmonic mean of precision and recall</td>
+</tr>
+</tbody></table>
+<h3>Sample Test Cases</h3>
+<p><strong>Scam Examples Correctly Caught:</strong></p>
+<ul>
+<li><code>http://sbl-kyc-update.xyz/login.php</code> → Score 90 ❌ HIGH_RISK</li>
+<li>&quot;आपका बिजली बिल बकाया है... तुरंत लिंक पर बिल भरें&quot; → Score 85 ❌ HIGH_RISK</li>
+<li><code>upi://pay?pa=scammer89@ybl&amp;tn=Scan to Receive Cashback</code> → Score 78 ❌ HIGH_RISK</li>
+</ul>
+<p><strong>Legit Examples Correctly Verified:</strong></p>
+<ul>
+<li><code>https://www.onlinesbi.sbi/portal/web/home</code> → Score 0 ✅ SAFE</li>
+<li>&quot;Your A/C debited by INR 450.00 at Star Cafe&quot; → Score 5 ✅ SAFE</li>
+<li><code>upi://pay?pa=starbucks.merchant@icici&amp;am=250</code> → Score 5 ✅ SAFE</li>
+</ul>
+<hr>
+<h2>10. How to Run the App</h2>
+<h3>Prerequisites</h3>
+<ul>
+<li><strong>Node.js</strong> (version 18 or higher) — <a href="https://nodejs.org">Download</a></li>
+<li><strong>npm</strong> (comes with Node.js)</li>
+</ul>
+<h3>Step 1: Install Dependencies</h3>
+<pre><code class="language-bash">cd psychic-octo-meme-main
+npm install
+</code></pre>
+<h3>Step 2: Run in Development Mode</h3>
+<pre><code class="language-bash">npm run dev
+</code></pre>
+<p>Open your browser at <strong><a href="http://localhost:3000">http://localhost:3000</a></strong></p>
+<h3>Step 3: Build for Production</h3>
+<pre><code class="language-bash">npm run build
+npm start
+</code></pre>
+<h3>Firebase Configuration</h3>
+<p>The app comes pre-configured with Firebase credentials in <a href="file:///home/z/Downloads/psychic-octo-meme-main/lib/firebase.ts">firebase.ts</a>. No additional setup needed for the hackathon demo.</p>
+<hr>
+<h2>11. Indian Legal Framework &amp; Helplines</h2>
+<h3>Relevant Laws</h3>
+<table>
+<thead>
+<tr>
+<th>Law</th>
+<th>Section</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Information Technology Act, 2000</strong></td>
+<td>Section 66D</td>
+<td>Cheating by personation using computer resource</td>
+</tr>
+<tr>
+<td><strong>IT Act</strong></td>
+<td>Section 43</td>
+<td>Unauthorized access to computer systems</td>
+</tr>
+<tr>
+<td><strong>Indian Penal Code</strong></td>
+<td>Section 420</td>
+<td>Cheating and dishonestly inducing delivery of property</td>
+</tr>
+<tr>
+<td><strong>IPC</strong></td>
+<td>Section 468</td>
+<td>Forgery for purpose of cheating</td>
+</tr>
+<tr>
+<td><strong>Consumer Protection Act, 2019</strong></td>
+<td>Section 2(47)</td>
+<td>Unfair trade practices</td>
+</tr>
+</tbody></table>
+<h3>Emergency Helplines</h3>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Contact</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>National Cyber Crime Helpline</strong></td>
+<td>📞 <strong>1930</strong></td>
+</tr>
+<tr>
+<td><strong>Cyber Crime Portal</strong></td>
+<td>🌐 <a href="https://cybercrime.gov.in">cybercrime.gov.in</a></td>
+</tr>
+<tr>
+<td><strong>Chakshu Portal (DoT)</strong></td>
+<td>🌐 <a href="https://sancharsaathi.gov.in/Chakshu/">sancharsaathi.gov.in/Chakshu</a></td>
+</tr>
+<tr>
+<td><strong>Forward Fraud SMS to</strong></td>
+<td>📱 <strong>1909</strong></td>
+</tr>
+<tr>
+<td><strong>Women Helpline</strong></td>
+<td>📞 <strong>181</strong></td>
+</tr>
+<tr>
+<td><strong>Police Emergency</strong></td>
+<td>📞 <strong>100 / 112</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>12. Team Members &amp; Roles</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Enrollment</th>
+<th>Role</th>
+<th>Contribution</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Aastik Tripathi</strong></td>
+<td>26BCY10090</td>
+<td>Security Architecture &amp; Lead</td>
+<td>Overall architecture, URL analyzer, threat scoring, Zero-Trust framework</td>
+</tr>
+<tr>
+<td><strong>Palak Kalra</strong></td>
+<td>26BCY10001</td>
+<td>NLP &amp; Linguistic Intelligence</td>
+<td>Multilingual NLP engine, Hindi/Hinglish detection, urgency scoring</td>
+</tr>
+<tr>
+<td><strong>Yash Raj Kushwaha</strong></td>
+<td>26BCE10122</td>
+<td>Full-Stack &amp; Cloud Integration</td>
+<td>Next.js frontend, Firebase integration, API routes, UI/UX design</td>
+</tr>
+<tr>
+<td><strong>Mangal Nath Yadav</strong></td>
+<td>26BHI10047</td>
+<td>UPI Protocols &amp; QR Pipeline</td>
+<td>QR inspector, reverse-charge detection, UPI intent parsing, jsQR integration</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>13. Glossary for Beginners</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Phishing</strong></td>
+<td>Fake website/message designed to steal your passwords</td>
+</tr>
+<tr>
+<td><strong>Typosquatting</strong></td>
+<td>Registering a domain that looks like a real one (e.g., <code>sbl</code> instead of <code>sbi</code>)</td>
+</tr>
+<tr>
+<td><strong>Homograph Attack</strong></td>
+<td>Using foreign characters that look like English letters</td>
+</tr>
+<tr>
+<td><strong>Zero-Trust</strong></td>
+<td>Security model: &quot;Never trust, always verify&quot;</td>
+</tr>
+<tr>
+<td><strong>UPI</strong></td>
+<td>Unified Payments Interface — India&#39;s instant payment system</td>
+</tr>
+<tr>
+<td><strong>VPA</strong></td>
+<td>Virtual Payment Address (your UPI ID like <code>name@bank</code>)</td>
+</tr>
+<tr>
+<td><strong>QR Code</strong></td>
+<td>Quick Response code — 2D barcode you scan with your phone</td>
+</tr>
+<tr>
+<td><strong>NLP</strong></td>
+<td>Natural Language Processing — AI that understands text</td>
+</tr>
+<tr>
+<td><strong>TLD</strong></td>
+<td>Top-Level Domain (the <code>.com</code>, <code>.xyz</code>, <code>.in</code> part of a URL)</td>
+</tr>
+<tr>
+<td><strong>SSL/TLS</strong></td>
+<td>Encryption that makes <code>https://</code> secure</td>
+</tr>
+<tr>
+<td><strong>Reverse-Charge Scam</strong></td>
+<td>Scammer sends QR claiming &quot;receive money&quot; but it actually debits you</td>
+</tr>
+<tr>
+<td><strong>KYC</strong></td>
+<td>Know Your Customer — identity verification required by banks</td>
+</tr>
+<tr>
+<td><strong>Firebase RTDB</strong></td>
+<td>Firebase Realtime Database — Google&#39;s cloud database with live sync</td>
+</tr>
+<tr>
+<td><strong>Heuristic</strong></td>
+<td>A rule-based method to detect patterns (not machine learning)</td>
+</tr>
+<tr>
+<td><strong>API Route</strong></td>
+<td>A server-side endpoint that processes requests</td>
+</tr>
+<tr>
+<td><strong>Punycode</strong></td>
+<td>A way to encode international characters in domain names</td>
+</tr>
+</tbody></table>
+<hr>
+<blockquote>
+<p><strong>Built with 💛 for IEEE VIT Bhopal Hackathon 2026 by Team D43M0N$</strong></p>
+</blockquote>
+
+
+</body>
+</html>

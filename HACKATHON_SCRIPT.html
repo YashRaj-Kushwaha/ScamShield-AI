@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ScamShield AI - Hackathon Presentation Script</title>
+<style>
+    @page {
+        size: A4;
+        margin: 18mm 16mm 18mm 16mm;
+    }
+    
+    body {
+        font-family: 'Noto Sans', 'Noto Sans Devanagari', 'Liberation Sans', sans-serif;
+        color: #1e293b;
+        background: #ffffff;
+        line-height: 1.6;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        font-size: 19pt;
+        color: #0f172a;
+        font-weight: 800;
+        margin-top: 0;
+        margin-bottom: 8pt;
+        padding-bottom: 6pt;
+        border-bottom: 2.5pt solid #7c3aed;
+        page-break-after: avoid;
+    }
+
+    h2 {
+        font-size: 13.5pt;
+        color: #4338ca;
+        font-weight: 700;
+        margin-top: 18pt;
+        margin-bottom: 6pt;
+        padding-bottom: 3pt;
+        border-bottom: 1pt solid #cbd5e1;
+        page-break-after: avoid;
+    }
+
+    h3 {
+        font-size: 11pt;
+        color: #0f172a;
+        font-weight: 700;
+        margin-top: 14pt;
+        margin-bottom: 4pt;
+        page-break-after: avoid;
+    }
+
+    h4 {
+        font-size: 10.5pt;
+        color: #1e293b;
+        font-weight: 700;
+        margin-top: 10pt;
+        margin-bottom: 3pt;
+        page-break-after: avoid;
+    }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 6pt;
+    }
+
+    blockquote {
+        margin: 8pt 0 12pt 0;
+        padding: 8pt 14pt;
+        background-color: #f8fafc;
+        border-left: 4.5pt solid #6366f1;
+        border-radius: 0 6pt 6pt 0;
+        color: #1e293b;
+        font-size: 9.8pt;
+        line-height: 1.6;
+        page-break-inside: avoid;
+    }
+
+    blockquote p:last-child {
+        margin-bottom: 0;
+    }
+
+    em {
+        color: #475569;
+        font-style: italic;
+        background: #f1f5f9;
+        padding: 1.5pt 5pt;
+        border-radius: 4pt;
+        font-size: 9pt;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 10pt 0 14pt 0;
+        font-size: 9pt;
+        page-break-inside: avoid;
+    }
+
+    th {
+        background-color: #0f172a;
+        color: #ffffff;
+        font-weight: 700;
+        text-align: left;
+        padding: 6pt 8pt;
+        border: 1pt solid #0f172a;
+    }
+
+    td {
+        padding: 5.5pt 8pt;
+        border: 1pt solid #cbd5e1;
+        vertical-align: top;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f8fafc;
+    }
+
+    code {
+        font-family: 'Liberation Mono', 'DejaVu Sans Mono', Consolas, monospace;
+        font-size: 8.5pt;
+        background: #f1f5f9;
+        color: #0f172a;
+        padding: 1.5pt 4pt;
+        border-radius: 3pt;
+        border: 1pt solid #e2e8f0;
+    }
+
+    ul, ol {
+        margin-top: 0;
+        margin-bottom: 8pt;
+        padding-left: 18pt;
+    }
+
+    li {
+        margin-bottom: 3pt;
+    }
+
+    hr {
+        border: none;
+        border-top: 1pt solid #e2e8f0;
+        margin: 14pt 0;
+    }
+</style>
+</head>
+<body>
+<h1>🎤 ScamShield AI — Hackathon Presentation Script</h1>
+<blockquote>
+<p><strong>IEEE VIT Bhopal Hackathon 2026 · Track 04.1</strong>
+<strong>Team D43M0N$ · 4-Person Presentation Script</strong>
+<strong>Total Time: ~10 minutes + Q&amp;A</strong></p>
+</blockquote>
+<hr>
+<h2>👥 Speaker Roles</h2>
+<table>
+<thead>
+<tr>
+<th>Speaker</th>
+<th>Name</th>
+<th>Color Code</th>
+<th>Primary Topics</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>🟦 <strong>Speaker 1</strong></td>
+<td><strong>Aastik Tripathi</strong></td>
+<td>Blue</td>
+<td>Opening, Problem, Architecture, Closing</td>
+</tr>
+<tr>
+<td>🟪 <strong>Speaker 2</strong></td>
+<td><strong>Palak Kalra</strong></td>
+<td>Purple</td>
+<td>NLP Engine, Hindi Demo, Language Support</td>
+</tr>
+<tr>
+<td>🟩 <strong>Speaker 3</strong></td>
+<td><strong>Yash Raj Kushwaha</strong></td>
+<td>Green</td>
+<td>Live Demo, UI/UX, Firebase, Full-Stack</td>
+</tr>
+<tr>
+<td>🟧 <strong>Speaker 4</strong></td>
+<td><strong>Mangal Nath Yadav</strong></td>
+<td>Orange</td>
+<td>QR/UPI Engine, Reverse Scam Demo, Benchmark</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>⏱️ Timeline Overview</h2>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Section</th>
+<th>Speaker</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0:00 - 1:30</td>
+<td>Hook + Problem Statement</td>
+<td>🟦 Aastik</td>
+</tr>
+<tr>
+<td>1:30 - 3:00</td>
+<td>Architecture + How It Works</td>
+<td>🟦 Aastik → 🟪 Palak</td>
+</tr>
+<tr>
+<td>3:00 - 5:30</td>
+<td>Live Demo (3 scans)</td>
+<td>🟩 Yash Raj</td>
+</tr>
+<tr>
+<td>5:30 - 7:30</td>
+<td>Engine Deep Dive</td>
+<td>🟪 Palak + 🟧 Mangal Nath</td>
+</tr>
+<tr>
+<td>7:30 - 8:30</td>
+<td>Benchmark Results</td>
+<td>🟧 Mangal Nath</td>
+</tr>
+<tr>
+<td>8:30 - 10:00</td>
+<td>Impact + Closing</td>
+<td>🟦 Aastik</td>
+</tr>
+<tr>
+<td>10:00+</td>
+<td>Q&amp;A</td>
+<td>All</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>📜 THE SCRIPT</h2>
+<hr>
+<h3>SECTION 1: THE HOOK (0:00 - 1:30)</h3>
+<p><strong>🟦 Aastik (Speaker 1) — Standing center stage</strong></p>
+<blockquote>
+<p><em>[Look at the audience directly. Speak slowly and clearly.]</em></p>
+</blockquote>
+<p><strong>Aastik:</strong></p>
+<blockquote>
+<p>&quot;Good morning/afternoon, respected judges and fellow hackers.</p>
+<p>Let me start with a question.</p>
+<p><em>[Pause for 2 seconds]</em></p>
+<p>How many of you have received an SMS saying — &#39;Dear customer, your SBI account will be blocked in 24 hours. Update your KYC now&#39;?</p>
+<p><em>[Raise your hand to encourage audience]</em></p>
+<p>Almost everyone.</p>
+<p>Now here&#39;s the scary part — In 2023, Indians lost <strong>₹11,333 crore</strong> to cyber fraud. That&#39;s ₹31 crore <em>every single day</em>. And 47% of these scams used fake links and UPI QR codes.</p>
+<p>The biggest problem? By the time a victim realizes it&#39;s a scam, the money is already gone. There is no &#39;undo&#39; button in UPI.</p>
+<p><em>[Pause]</em></p>
+<p>That&#39;s exactly the problem we&#39;re solving today.</p>
+<p>We are <strong>Team D43M0N$</strong> — Aastik, Palak, Yash Raj, and Mangal Nath — from VIT Bhopal. And we&#39;ve built <strong>ScamShield AI</strong> — a pre-click, Zero-Trust phishing and UPI fraud defense platform.</p>
+<p>The key word here is <em><strong>pre-click</strong></em>. We don&#39;t wait for the scam to happen. We intercept it <em>before</em> the user clicks the link, <em>before</em> they enter their UPI PIN, and <em>before</em> a single rupee leaves their account.&quot;</p>
+</blockquote>
+<hr>
+<h3>SECTION 2: THE PROBLEM (1:30 - 2:15)</h3>
+<p><strong>🟦 Aastik continues</strong></p>
+<blockquote>
+<p>&quot;Our problem statement is <strong>Track 04.1: &#39;The Scam That Almost Worked&#39;</strong>.</p>
+<p>Every cyber scam follows the same 4-stage pattern:</p>
+<p><em>[Point to the screen if the PPT is showing, or count on fingers]</em></p>
+<p><strong>Stage 1:</strong> The victim gets an SMS from an unknown number.</p>
+<p><strong>Stage 2:</strong> The message creates artificial panic — &#39;Your electricity will be cut tonight&#39;, &#39;Your account will be blocked in 24 hours&#39;.</p>
+<p><strong>Stage 3:</strong> The victim clicks a link that looks <em>exactly</em> like their bank&#39;s website — but it&#39;s a pixel-perfect clone on a fake domain.</p>
+<p><strong>Stage 4:</strong> They enter their UPI PIN or OTP, and the money is transferred instantly to a mule account. <em>Irreversible.</em></p>
+<p>ScamShield intercepts at <strong>Stage 2 and 3</strong> — before any damage happens.&quot;</p>
+</blockquote>
+<hr>
+<h3>SECTION 3: ARCHITECTURE (2:15 - 3:00)</h3>
+<p><strong>🟦 Aastik → 🟪 Palak (Handoff)</strong></p>
+<p><strong>Aastik:</strong></p>
+<blockquote>
+<p>&quot;Now let me briefly explain how ScamShield works under the hood, before Yash gives you a live demo.</p>
+<p>ScamShield has <strong>3 detection engines</strong> running simultaneously:</p>
+<p><strong>Engine 1:</strong> The <strong>URL Analyzer</strong> — checks if a website link is typosquatting, using suspicious domains, or impersonating a bank.</p>
+<p><strong>Engine 2:</strong> The <strong>NLP Engine</strong> — Palak built this. It analyzes the <em>text</em> of SMS messages in English, Hindi, AND Hinglish. It detects urgency triggers, fear tactics, and authority impersonation.</p>
+<p><strong>Engine 3:</strong> The <strong>QR &amp; UPI Inspector</strong> — Mangal built this. It parses QR codes and detects the deadly &#39;reverse-charge&#39; scam where a QR claims &#39;scan to receive money&#39; but actually <em>debits</em> your account.</p>
+<p>All three engines feed into an <strong>Omni Threat Scorer</strong> that produces a unified risk score from 0 to 100.</p>
+<p>Now, Yash will show you all of this live.&quot;</p>
+</blockquote>
+<hr>
+<h3>SECTION 4: LIVE DEMO — THE MAIN EVENT (3:00 - 5:30)</h3>
+<p><strong>🟩 Yash Raj (Speaker 3) — Takes over the laptop</strong></p>
+<blockquote>
+<p><em>[Move to the laptop. Have the app already open at localhost:3000]</em></p>
+</blockquote>
+<p><strong>Yash Raj:</strong></p>
+<blockquote>
+<p>&quot;Thank you, Aastik. Let me show you ScamShield in action. What you&#39;re seeing is our live application built with Next.js 15, React 19, TypeScript, and Firebase.</p>
+<p>I&#39;m going to run 3 live scans right now — one for each engine.&quot;</p>
+</blockquote>
+<hr>
+<h4>Demo 1: Fake Bank Link (30 seconds)</h4>
+<blockquote>
+<p><em>[Click the first preset card: &quot;Fake SBI Bank Clone&quot;]</em></p>
+</blockquote>
+<p><strong>Yash Raj:</strong></p>
+<blockquote>
+<p>&quot;<strong>Demo 1: Fake Bank Link.</strong></p>
+<p>I&#39;m clicking this preset — it simulates someone sending you the link <code>sbl-kyc-update.xyz</code>.</p>
+<p>Notice it says &#39;sbl&#39; not &#39;sbi&#39; — that&#39;s called <strong>typosquatting</strong>.</p>
+<p><em>[Wait for results to load — point to the screen]</em></p>
+<p>And look — ScamShield immediately flags it as <strong>Critical Scam Detected</strong> with a threat score of <strong>90 out of 100</strong>.</p>
+<p>It detected:</p>
+<ul>
+<li>Brand impersonation — mimicking SBI</li>
+<li>Suspicious .xyz domain</li>
+<li>Phishing keywords like &#39;kyc&#39; and &#39;update&#39;</li>
+<li>Newly registered domain</li>
+</ul>
+<p>All of this in under <strong>2 seconds</strong>, before the user even clicks the link.&quot;</p>
+</blockquote>
+<hr>
+<h4>Demo 2: Hindi Scam SMS (30 seconds)</h4>
+<blockquote>
+<p><em>[Click the second preset card: &quot;Hindi Discom Bill SMS&quot;]</em></p>
+</blockquote>
+<p><strong>Yash Raj:</strong></p>
+<blockquote>
+<p>&quot;<strong>Demo 2: Hindi Scam SMS.</strong></p>
+<p>This is a message in <em>pure Hindi Devanagari</em> — &#39;आपका बिजली बिल बकाया है, आज रात 9:30 बजे बिजली काट दी जाएगी.&#39;</p>
+<p>This is the electricity bill disconnection scam — extremely common in India.</p>
+<p><em>[Wait for results]</em></p>
+<p>ScamShield&#39;s NLP Engine flags this as <strong>Electricity Utility Scam</strong> with a high urgency score.</p>
+<p>It detected: &#39;तुरंत&#39; — urgency trigger, &#39;काट दी जाएगी&#39; — fear tactic, and authority impersonation of the Electricity Department.</p>
+<p><strong>This works in Hindi, Hinglish, AND English.</strong> Palak will explain the NLP engine in detail.&quot;</p>
+</blockquote>
+<hr>
+<h4>Demo 3: Reverse QR Scam (30 seconds)</h4>
+<blockquote>
+<p><em>[Click the third preset card: &quot;Reverse UPI QR Trap&quot;]</em></p>
+</blockquote>
+<p><strong>Yash Raj:</strong></p>
+<blockquote>
+<p>&quot;<strong>Demo 3: The Reverse QR Scam — this is the most dangerous one.</strong></p>
+<p>Someone sends you a QR code and says &#39;Scan this to receive ₹5,000 cashback&#39;.</p>
+<p>But here&#39;s the truth that most Indians don&#39;t know: <strong>In UPI, you NEVER scan a QR to receive money.</strong> Scanning a QR always <em>debits</em> from your account.</p>
+<p><em>[Wait for results]</em></p>
+<p>ScamShield immediately catches this — &#39;<strong>CRITICAL REVERSE-QR SCAM</strong>&#39;. The transaction note says &#39;Receive Cashback&#39; but the UPI intent will actually debit ₹5,000 from you.</p>
+<p>It also detects that the VPA is a personal account pretending to be &#39;SBI Refund Department&#39;.&quot;</p>
+</blockquote>
+<hr>
+<h4>Show Safe Result (15 seconds)</h4>
+<blockquote>
+<p><em>[Click the fourth preset card: &quot;Official Bank Alert&quot;]</em></p>
+</blockquote>
+<p><strong>Yash Raj:</strong></p>
+<blockquote>
+<p>&quot;And for contrast — when I scan the <em>real</em> SBI website <code>onlinesbi.sbi</code>, ScamShield shows <strong>Verified Authentic</strong> with a green checkmark. Score: 0%. It recognizes official domains.</p>
+<p>We also have scan history stored in Firebase, community stories, an attack simulator, and 5 beautiful themes — all fully responsive.&quot;</p>
+</blockquote>
+<hr>
+<p><strong>Yash Raj:</strong></p>
+<blockquote>
+<p>&quot;Now let me hand it over to Palak to explain how our NLP engine works under the hood.&quot;</p>
+</blockquote>
+<hr>
+<h3>SECTION 5: NLP ENGINE DEEP DIVE (5:30 - 6:30)</h3>
+<p><strong>🟪 Palak (Speaker 2)</strong></p>
+<p><strong>Palak:</strong></p>
+<blockquote>
+<p>&quot;Thank you, Yash. The NLP Engine is what makes ScamShield unique for the Indian context.</p>
+<p>Most security tools only work with English text. But in India, scam messages come in <strong>three languages</strong> — English, Hindi in Devanagari script, and Hinglish — which is Hindi written in English letters.</p>
+<p><em>[Example gesture]</em></p>
+<p>For instance, a scammer might write &#39;aapka khata band ho jayega&#39; — that&#39;s Hinglish. Or &#39;आपका खाता बंद कर दिया जाएगा&#39; — that&#39;s Hindi.</p>
+<p>Our engine handles all three. Here&#39;s how:</p>
+<p><strong>Step 1: Language Detection</strong> — We check for Devanagari Unicode characters. If found, it&#39;s Hindi. If we find romanized Hindi tokens like &#39;turant&#39;, &#39;jayega&#39;, &#39;bijli&#39; — it&#39;s Hinglish.</p>
+<p><strong>Step 2: Urgency Scoring</strong> — We have a dictionary of <strong>30+ panic trigger words</strong> across all 3 languages, each with weighted scores. &#39;Final warning&#39; = 35 points. &#39;काट दी जाएगी&#39; = 35 points.</p>
+<p><strong>Step 3: Authority Impersonation</strong> — We detect if the message pretends to be from SBI, RBI, Electricity Board, TRAI, CBI, or India Post.</p>
+<p><strong>Step 4: Category Classification</strong> — We classify each message into one of 7 scam types: KYC fraud, electricity scam, reverse UPI, digital arrest, job fraud, lottery bait, or legitimate notification.</p>
+<p>The final score combines urgency at 45% weight, impersonation at 45%, and trigger count at 10%.</p>
+<p>Now Mangal will explain the QR engine.&quot;</p>
+</blockquote>
+<hr>
+<h3>SECTION 6: QR/UPI ENGINE + BENCHMARK (6:30 - 8:30)</h3>
+<p><strong>🟧 Mangal Nath (Speaker 4)</strong></p>
+<p><strong>Mangal Nath:</strong></p>
+<blockquote>
+<p>&quot;Thank you, Palak. I built the QR Code and UPI Intent Inspector.</p>
+<p>When you scan a QR code for payment, it actually contains a text string called a <strong>UPI intent URI</strong>. It looks like this:</p>
+<p><code>upi://pay?pa=name@bank&amp;pn=PayeeName&amp;am=5000&amp;tn=Payment</code></p>
+<p>Our engine parses every parameter:</p>
+<ul>
+<li><code>pa</code> = payee&#39;s UPI address</li>
+<li><code>pn</code> = payee&#39;s display name</li>
+<li><code>am</code> = amount</li>
+<li><code>tn</code> = transaction note</li>
+</ul>
+<p>We check for <strong>3 critical fraud patterns</strong>:</p>
+<p><strong>Pattern 1: Reverse-Charge Scam</strong> — If the note contains words like &#39;Refund&#39;, &#39;Cashback&#39;, &#39;Receive&#39;, or &#39;Prize&#39; — it&#39;s a 100% scam. Because in UPI, scanning a QR always DEBITS money, never credits.</p>
+<p><strong>Pattern 2: VPA Masquerade</strong> — If the name says &#39;Electricity Department&#39; but the VPA ends in <code>@ybl</code> or <code>@paytm</code> — that&#39;s a personal account pretending to be a corporate one.</p>
+<p><strong>Pattern 3: Malware Links</strong> — If the QR contains a URL ending in <code>.apk</code> — that&#39;s a direct malware download.</p>
+<p>We also support <strong>QR image upload</strong> — users can upload a photo of a QR code, and we decode it client-side using the jsQR library without sending the image to any server. This preserves privacy.&quot;</p>
+</blockquote>
+<hr>
+<p><strong>🟧 Mangal Nath continues — Benchmark Results</strong></p>
+<blockquote>
+<p>&quot;Now, for our benchmark evaluation.</p>
+<p>We built a dataset of <strong>100 test samples</strong> — 50 confirmed scams and 50 confirmed legitimate items. These cover URLs, SMS messages, and QR codes across English, Hindi, and Hinglish.</p>
+<p>Our results:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Accuracy</strong></td>
+<td><strong>98%</strong></td>
+</tr>
+<tr>
+<td><strong>Precision</strong></td>
+<td><strong>98%</strong></td>
+</tr>
+<tr>
+<td><strong>Recall</strong></td>
+<td><strong>98%</strong></td>
+</tr>
+<tr>
+<td><strong>F1 Score</strong></td>
+<td><strong>98%</strong></td>
+</tr>
+</tbody></table>
+<p>That means out of 100 tests, we correctly classified 98. We have near-zero false positives — we don&#39;t wrongly flag legitimate bank notifications as scams. And near-zero false negatives — we catch almost every scam.</p>
+<p>You can actually run this benchmark yourself in our app — there&#39;s a built-in benchmark runner that generates a live confusion matrix.&quot;</p>
+</blockquote>
+<hr>
+<h3>SECTION 7: IMPACT &amp; CLOSING (8:30 - 10:00)</h3>
+<p><strong>🟦 Aastik (Speaker 1) — Returns to center</strong></p>
+<p><strong>Aastik:</strong></p>
+<blockquote>
+<p>&quot;Thank you, team. Let me summarize what makes ScamShield AI special.</p>
+<p><em>[Count on fingers]</em></p>
+<p><strong>One</strong> — We&#39;re <strong>pre-click</strong>, not post-theft. We stop scams before they happen, not after.</p>
+<p><strong>Two</strong> — We&#39;re <strong>multilingual</strong>. We understand English, Hindi, and Hinglish — because scammers in India don&#39;t just speak English.</p>
+<p><strong>Three</strong> — We detect <strong>India-specific scams</strong> that global tools miss — reverse UPI QR codes, electricity bill threats, digital arrest impersonation.</p>
+<p><strong>Four</strong> — We&#39;re <strong>98% accurate</strong> on a 100-sample benchmark with a proper confusion matrix.</p>
+<p><strong>Five</strong> — Everything runs <strong>client-side and in real-time</strong>. No external API calls. No data leaves the user&#39;s browser for QR decoding. Privacy first.</p>
+<p><em>[Pause]</em></p>
+<p>Our vision is simple: <strong>Shift India&#39;s cyber defense from reactive to proactive.</strong> No more ₹31 crore lost every day. No more grandmothers losing their savings to a fake SMS.</p>
+<p>If a tool like ScamShield was available on every Indian phone, we could prevent millions of scam incidents before the first click.</p>
+<p>We are Team D43M0N$ — and this is ScamShield AI.</p>
+<p>Thank you.&quot;</p>
+</blockquote>
+<blockquote>
+<p><em>[All 4 members stand together. Small bow.]</em></p>
+</blockquote>
+<hr>
+<h2>❓ Q&amp;A PREPARATION — Predicted Judge Questions &amp; Answers</h2>
+<h3>Q1: &quot;How is this different from Google Safe Browsing?&quot;</h3>
+<p><strong>Who answers: 🟦 Aastik</strong></p>
+<blockquote>
+<p>&quot;Google Safe Browsing maintains a blacklist of known malicious URLs. Our approach is different — we use heuristic analysis to detect <em>new, never-seen-before</em> scam domains. When a scammer registers <code>sbl-kyc-update.xyz</code> today, Google&#39;s blacklist won&#39;t have it yet. But our URL analyzer instantly catches the typosquatting, suspicious TLD, and brand impersonation. We also analyze SMS text and QR codes — which Safe Browsing doesn&#39;t do at all.&quot;</p>
+</blockquote>
+<h3>Q2: &quot;Is this using Machine Learning or AI?&quot;</h3>
+<p><strong>Who answers: 🟪 Palak</strong></p>
+<blockquote>
+<p>&quot;Our current version uses a heuristic, rule-based approach — weighted keyword scoring with linguistic pattern matching. We chose this deliberately because: (1) it&#39;s explainable — we can tell users exactly WHY something is flagged, (2) it&#39;s fast — no model inference latency, (3) it works offline — no API calls needed. For future versions, we plan to add ML classification trained on actual scam SMS datasets.&quot;</p>
+</blockquote>
+<h3>Q3: &quot;What if a scammer doesn&#39;t use any of your keywords?&quot;</h3>
+<p><strong>Who answers: 🟪 Palak</strong></p>
+<blockquote>
+<p>&quot;Our detection isn&#39;t single-point. Even without urgency keywords, we check domain trust, TLD risk, SSL status, subdomain abuse, brand impersonation, and UPI payment anomalies. A scam link will still get flagged for its domain characteristics even if the accompanying message is clean. Our multi-vector approach means a scammer would need to bypass ALL engines simultaneously — which is extremely difficult.&quot;</p>
+</blockquote>
+<h3>Q4: &quot;How do you handle false positives? What if a real bank alert gets flagged?&quot;</h3>
+<p><strong>Who answers: 🟧 Mangal Nath</strong></p>
+<blockquote>
+<p>&quot;Great question. We have an explicit list of verified official domains — SBI, HDFC, ICICI, RBI, etc. When a URL matches an official domain, we give it a -50 point bonus, effectively clearing it. For messages, we check for legitimate transaction patterns like &#39;debited by INR&#39; or &#39;credited by INR&#39; without external links. Our benchmark shows less than 2% false positive rate.&quot;</p>
+</blockquote>
+<h3>Q5: &quot;How does the QR image upload work?&quot;</h3>
+<p><strong>Who answers: 🟧 Mangal Nath</strong></p>
+<blockquote>
+<p>&quot;When a user uploads a QR code image, we use the jsQR JavaScript library to decode it entirely in the browser. The image is drawn onto an HTML5 Canvas, and jsQR reads the pixel data to extract the encoded text. The image never leaves the user&#39;s device — no server upload. This is a deliberate privacy decision.&quot;</p>
+</blockquote>
+<h3>Q6: &quot;Why Firebase and not a traditional database?&quot;</h3>
+<p><strong>Who answers: 🟩 Yash Raj</strong></p>
+<blockquote>
+<p>&quot;Firebase Realtime Database gives us instant WebSocket-based synchronization. When a scan is saved, all connected devices see it immediately — no polling, no refresh. For a hackathon demo, it also means zero backend server setup. We also use Firebase Authentication for Google sign-in and Firebase Analytics for usage telemetry.&quot;</p>
+</blockquote>
+<h3>Q7: &quot;Can this be deployed as a mobile app?&quot;</h3>
+<p><strong>Who answers: 🟩 Yash Raj</strong></p>
+<blockquote>
+<p>&quot;Absolutely. Since we built it with Next.js and React, it&#39;s already a responsive Progressive Web App. Users can add it to their home screen on Android. For a native app, we could wrap it with React Native or Capacitor. The detection engines are pure TypeScript with zero native dependencies, so they port directly.&quot;</p>
+</blockquote>
+<h3>Q8: &quot;What&#39;s the Zero-Trust model you keep mentioning?&quot;</h3>
+<p><strong>Who answers: 🟦 Aastik</strong></p>
+<blockquote>
+<p>&quot;Zero-Trust is a cybersecurity principle: never trust, always verify. In our context, it means we treat EVERY incoming link, message, and QR code as potentially malicious by default. It must pass all our security checkpoints before we label it safe. This is the opposite of traditional approaches that only flag known-bad URLs.&quot;</p>
+</blockquote>
+<h3>Q9: &quot;How do you detect Hinglish specifically?&quot;</h3>
+<p><strong>Who answers: 🟪 Palak</strong></p>
+<blockquote>
+<p>&quot;We maintain a dictionary of romanized Hindi tokens — words like &#39;turant&#39; (immediately), &#39;bijli&#39; (electricity), &#39;jayega&#39; (will happen), &#39;khata&#39; (account). If the message contains these tokens but NOT Devanagari script, we classify it as Hinglish. This is important because many scam SMS in India use this mixed format.&quot;</p>
+</blockquote>
+<h3>Q10: &quot;What&#39;s your data pipeline? Where does the benchmark dataset come from?&quot;</h3>
+<p><strong>Who answers: 🟧 Mangal Nath</strong></p>
+<blockquote>
+<p>&quot;We manually curated 100 test samples based on real-world Indian scam patterns documented by the National Cyber Crime Portal, news reports, and actual phishing SMS shared by users. 50 are scam samples covering banking phishing, utility fraud, reverse UPI, digital arrest, and lottery baits. 50 are legitimate samples from official bank notifications, merchant QR codes, and government portals.&quot;</p>
+</blockquote>
+<h3>Q11: &quot;What about scams on WhatsApp or Instagram?&quot;</h3>
+<p><strong>Who answers: 🟦 Aastik</strong></p>
+<blockquote>
+<p>&quot;Our NLP engine works on any text — whether it comes from SMS, WhatsApp, Instagram DMs, or email. The user simply copies and pastes the suspicious message into ScamShield. For QR codes, they can screenshot and upload. In a future version, we could build a browser extension or share-intent handler for direct integration.&quot;</p>
+</blockquote>
+<h3>Q12: &quot;How is the risk score calculated exactly?&quot;</h3>
+<p><strong>Who answers: 🟧 Mangal Nath</strong></p>
+<blockquote>
+<p>&quot;Each engine produces its own score from 0-100. The Omni Threat Scorer combines them with weighted averages: Message analysis gets 40% weight, URL analysis gets 35%, and QR analysis gets 35%. The final score maps to tiers: 0-29 is SAFE, 30-64 is SUSPICIOUS, 65-100 is HIGH_RISK.&quot;</p>
+</blockquote>
+<h3>Q13: &quot;What happens if Firebase is down?&quot;</h3>
+<p><strong>Who answers: 🟩 Yash Raj</strong></p>
+<blockquote>
+<p>&quot;We built resilient fallbacks. If Firebase RTDB is unreachable, all data falls back to localStorage and in-memory cache. The detection engines run entirely locally — they don&#39;t depend on Firebase at all. Firebase is only used for history sync, social stories, and user profiles. The core scanning works fully offline.&quot;</p>
+</blockquote>
+<h3>Q14: &quot;Have you tested this with real users?&quot;</h3>
+<p><strong>Who answers: 🟦 Aastik</strong></p>
+<blockquote>
+<p>&quot;We&#39;ve tested within our team and with family members — including parents and grandparents who are non-technical. The feedback was very positive, especially for the Hindi language support. Our grandparents were particularly surprised when ScamShield caught a real electricity bill scam SMS they had received. That real-world validation is what motivated us.&quot;</p>
+</blockquote>
+<h3>Q15: &quot;What would you build next if you had 3 more months?&quot;</h3>
+<p><strong>Who answers: 🟦 Aastik</strong></p>
+<blockquote>
+<p>&quot;Three priorities: (1) A Chrome browser extension that scans links in real-time as you browse. (2) ML-based classification trained on actual scam datasets from the NCCRP. (3) Integration with Gemini AI for explainable, conversational threat analysis — so users can ask &#39;Why is this link dangerous?&#39; and get a plain-language answer.&quot;</p>
+</blockquote>
+<hr>
+<h2>🎯 Presentation Tips for Beginners</h2>
+<h3>Before the Presentation:</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Make sure the app is running at <code>localhost:3000</code></li>
+<li><input disabled="" type="checkbox"> Test all 4 preset demos work correctly</li>
+<li><input disabled="" type="checkbox"> Have the app open in a maximized browser window</li>
+<li><input disabled="" type="checkbox"> Turn off notifications and close other apps</li>
+<li><input disabled="" type="checkbox"> Have the PPT as backup if live demo fails</li>
+</ul>
+<h3>During the Presentation:</h3>
+<ul>
+<li><strong>Stand up straight</strong> and make eye contact with judges</li>
+<li><strong>Speak slowly</strong> — beginners tend to rush. Take pauses</li>
+<li><strong>Point at the screen</strong> when showing demo results</li>
+<li>When transitioning between speakers, <strong>say their name</strong>: &quot;Now Palak will explain...&quot;</li>
+<li>If a demo fails, say: &quot;Let me show you the result from our documentation instead&quot; (have screenshots ready)</li>
+</ul>
+<h3>Body Language:</h3>
+<ul>
+<li>Aastik: Stand center, be confident. You set the energy</li>
+<li>Palak: Stand to Aastik&#39;s left. Use hand gestures when explaining languages</li>
+<li>Yash Raj: Sit at the laptop for the demo, then stand for Q&amp;A</li>
+<li>Mangal Nath: Stand to Aastik&#39;s right. Use the screen pointer for QR examples</li>
+</ul>
+<h3>Common Mistakes to Avoid:</h3>
+<ul>
+<li>❌ Don&#39;t read from your phone or notes</li>
+<li>❌ Don&#39;t say &quot;umm&quot; or &quot;basically&quot; — just pause instead</li>
+<li>❌ Don&#39;t all talk at once during Q&amp;A — decide who answers which topic</li>
+<li>❌ Don&#39;t use jargon without explaining it first</li>
+<li>❌ Don&#39;t apologize (&quot;We&#39;re just beginners...&quot;) — own your work!</li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>Remember: You built something that protects people. Be proud of it. 🛡️</strong></p>
+<p>Good luck, Team D43M0N$! 🚀</p>
+</blockquote>
+
+
+</body>
+</html>
