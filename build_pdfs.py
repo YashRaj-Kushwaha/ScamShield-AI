@@ -429,32 +429,24 @@ def build_styled_script_html(body_html, title):
 </html>"""
 
 def main():
-    print("Step 1: Converting FULL_DOCUMENTATION.md...")
-    raw_doc_html = render_md_to_html("FULL_DOCUMENTATION.md")
+    print("Step 1: Converting README.md...")
+    raw_doc_html = render_md_to_html("README.md")
     processed_doc_html = replace_mermaid_in_docs(raw_doc_html)
     full_doc_html = build_styled_doc_html(processed_doc_html, "ScamShield AI - Technical Documentation")
     
-    with open("FULL_DOCUMENTATION.html", "w", encoding="utf-8") as f:
+    with open("temp_doc.html", "w", encoding="utf-8") as f:
         f.write(full_doc_html)
 
-    print("Step 2: Converting HACKATHON_SCRIPT.md...")
-    raw_script_html = render_md_to_html("HACKATHON_SCRIPT.md")
-    full_script_html = build_styled_script_html(raw_script_html, "ScamShield AI - Hackathon Presentation Script")
-    
-    with open("HACKATHON_SCRIPT.html", "w", encoding="utf-8") as f:
-        f.write(full_script_html)
-
-    print("Step 3: Compiling FULL_DOCUMENTATION.pdf...")
+    print("Step 2: Compiling public/FULL_DOCUMENTATION.pdf...")
     subprocess.run([
         "libreoffice", "--headless", "--convert-to", "pdf",
-        "FULL_DOCUMENTATION.html", "--outdir", "."
+        "temp_doc.html", "--outdir", "public"
     ], check=True)
 
-    print("Step 4: Compiling HACKATHON_SCRIPT.pdf...")
-    subprocess.run([
-        "libreoffice", "--headless", "--convert-to", "pdf",
-        "HACKATHON_SCRIPT.html", "--outdir", "."
-    ], check=True)
+    if os.path.exists("public/temp_doc.pdf"):
+        os.replace("public/temp_doc.pdf", "public/FULL_DOCUMENTATION.pdf")
+    if os.path.exists("temp_doc.html"):
+        os.remove("temp_doc.html")
 
     print("Complete!")
 

@@ -45,3 +45,8 @@ next-env.d.ts
 .idea/
 *.swp
 *.swo
+
+# build artifacts & scratch
+temp_doc.*
+.~lock.*
+*.html
