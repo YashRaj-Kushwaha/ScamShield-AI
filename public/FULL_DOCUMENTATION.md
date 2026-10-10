@@ -19,7 +19,7 @@
 9. [Benchmark Results (98% Accuracy)](#9-benchmark-results-98-accuracy)
 10. [How to Run the App](#10-how-to-run-the-app)
 11. [Indian Legal Framework & Helplines](#11-indian-legal-framework--helplines)
-12. [Team Members & Roles](#12-team-members--roles)
+12. [Team Members](#12-team-members)
 13. [Glossary for Beginners](#13-glossary-for-beginners)
 
 ---
