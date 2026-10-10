@@ -22,28 +22,36 @@ interface ProjectDossierProps {
 export default function ProjectDossier({ language, t }: ProjectDossierProps) {
   const team = [
     {
-      name: "Aastik Tripathi",
-      reg: "26BCY10090",
-      role: language === "hi" ? "लीड सिक्योरिटी आर्किटेक्ट" : "Security Architecture & Lead",
-      focus: "Homograph link analysis, Zero-Trust threat scoring engine & system architecture"
-    },
-    {
-      name: "Palak Kalra",
-      reg: "26BCY10001",
-      role: language === "hi" ? "एनएलपी व भाषाई विशेषज्ञ" : "NLP & Linguistic Intelligence",
-      focus: "Multilingual urgency analysis (Hindi देवनागरी, Hinglish & English) & panic modeling"
-    },
-    {
       name: "Yash Raj Kushwaha",
       reg: "26BCE10122",
-      role: language === "hi" ? "फुल-स्टैक व क्लाउड इंजीनियर" : "Full-Stack Integration",
-      focus: "Next.js 15, minimalist design system, Firebase Realtime Database & telemetry sync"
+      role: language === "hi" ? "ऑथर व लीड आर्किटेक्ट" : "Author & Lead Architect",
+      focus: "Next.js 15, Zero-Trust threat orchestration, Firebase DB, Gemini AI Advisor & real-time sync",
+      github: "YashRaj-Kushwaha",
+      isAuthor: true
+    },
+    {
+      name: "Aastik Tripathi",
+      reg: "26BCY10090",
+      role: language === "hi" ? "योगदानकर्ता (सिक्योरिटी आर्किटेक्चर)" : "Contributor · Security Architecture",
+      focus: "Homograph link analysis, Zero-Trust threat scoring engine & system heuristics",
+      github: "DarkDevil811",
+      isAuthor: false
     },
     {
       name: "Mangal Nath Yadav",
       reg: "26BHI10047",
-      role: language === "hi" ? "यूपीआई व क्यूआर प्रोटोकॉल" : "UPI & QR Protocols",
-      focus: "UPI payment intent URI reverse-charge inspection & client QR decoding"
+      role: language === "hi" ? "योगदानकर्ता (यूपीआई व क्यूआर)" : "Contributor · UPI & QR Protocols",
+      focus: "UPI payment intent URI reverse-charge inspection & client QR decoding",
+      github: "shadowXg",
+      isAuthor: false
+    },
+    {
+      name: "Palak Kalra",
+      reg: "26BCY10001",
+      role: language === "hi" ? "योगदानकर्ता (एनएलपी व इंटेलिजेंस)" : "Contributor · NLP & Intelligence",
+      focus: "Multilingual urgency analysis (Hindi देवनागरी, Hinglish & English) & panic modeling",
+      github: "palak-kalra-gtihub",
+      isAuthor: false
     }
   ];
 
@@ -101,9 +109,37 @@ export default function ProjectDossier({ language, t }: ProjectDossierProps) {
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {team.map((m, idx) => (
-              <div key={idx} className="p-4 rounded-xl border border-app-border bg-app-surface hover:bg-app-surface-subtle transition space-y-1.5 shadow-2xs">
-                <div className="font-bold text-app-text text-xs">{m.name}</div>
-                <div className="font-mono text-[11px] text-app-accent font-semibold">{m.reg}</div>
+              <div 
+                key={idx} 
+                className={`p-4 rounded-xl border transition space-y-1.5 shadow-2xs ${
+                  m.isAuthor 
+                    ? "bg-emerald-500/5 border-emerald-500/30 hover:border-emerald-500/50" 
+                    : "border-app-border bg-app-surface hover:bg-app-surface-subtle"
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="font-bold text-app-text text-xs">{m.name}</div>
+                  <span className={`text-[9px] font-mono uppercase font-bold px-1.5 py-0.5 rounded ${
+                    m.isAuthor 
+                      ? "bg-emerald-500/10 text-emerald-600 border border-emerald-500/20" 
+                      : "bg-app-surface-subtle text-app-muted border border-app-border"
+                  }`}>
+                    {m.isAuthor ? "Author" : "Contributor"}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between text-[11px] font-mono">
+                  <span className="text-app-accent font-semibold">{m.reg}</span>
+                  <a
+                    href={`https://github.com/${m.github}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-app-accent hover:underline inline-flex items-center space-x-1"
+                    title={`@${m.github}`}
+                  >
+                    <span>@{m.github}</span>
+                    <ExternalLink className="h-2.5 w-2.5" />
+                  </a>
+                </div>
                 <div className="text-[10px] font-medium text-app-secondary">{m.role}</div>
                 <p className="text-[10px] text-app-muted leading-tight pt-1 border-t border-app-border/60">
                   {m.focus}

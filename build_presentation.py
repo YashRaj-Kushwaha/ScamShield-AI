@@ -202,16 +202,10 @@ def create_presentation():
     tp1.font.bold = True
     tp1.font.color.rgb = ACCENT_CYAN
 
-    members = [
-        "Mangal Nath Yadav (26BHI10047)",
-        "Aastik Tripathi (26BCY10090)",
-        "Yash Raj Kushwaha (26BCE10122)",
-        "Palak Kalra (26BCY10001)"
-    ]
     tp2 = ttf.add_paragraph()
-    tp2.text = "   •   ".join(members)
+    tp2.text = "👑 Author: Yash Raj Kushwaha (26BCE10122)   •   Contributors: Aastik Tripathi (26BCY10090)  •  Mangal Nath Yadav (26BHI10047)  •  Palak Kalra (26BCY10001)"
     tp2.font.name = FONT_HEADING
-    tp2.font.size = Pt(11.5)
+    tp2.font.size = Pt(10.5)
     tp2.font.bold = True
     tp2.font.color.rgb = TEXT_WHITE
     tp2.space_before = Pt(4)
@@ -1024,17 +1018,17 @@ def create_presentation():
     rtf.margin_left = rtf.margin_right = rtf.margin_top = Inches(0.22)
 
     rp1 = rtf.paragraphs[0]
-    rp1.text = "👥 Team D43M0N$ — Roster & Project Links"
+    rp1.text = "👥 Author & Contributors — Team D43M0N$"
     rp1.font.name = FONT_HEADING
     rp1.font.size = Pt(13)
     rp1.font.bold = True
     rp1.font.color.rgb = ACCENT_EMERALD
 
     team_members_info = [
-        ("Mangal Nath Yadav", "Reg No: 26BHI10047 · VIT Bhopal University"),
-        ("Aastik Tripathi", "Reg No: 26BCY10090 · VIT Bhopal University"),
-        ("Yash Raj Kushwaha", "Reg No: 26BCE10122 · VIT Bhopal University"),
-        ("Palak Kalra", "Reg No: 26BCY10001 · VIT Bhopal University")
+        ("👑 Yash Raj Kushwaha (Author & Lead)", "github.com/YashRaj-Kushwaha · Reg: 26BCE10122 · Architecture & Full-Stack"),
+        ("🛡️ Aastik Tripathi (Contributor)", "github.com/DarkDevil811 · Reg: 26BCY10090 · Security & Threat Scoring"),
+        ("🔍 Mangal Nath Yadav (Contributor)", "github.com/shadowXg · Reg: 26BHI10047 · UPI & QR Protocol Parsing"),
+        ("⚖️ Palak Kalra (Contributor)", "github.com/palak-kalra-gtihub · Reg: 26BCY10001 · Multilingual NLP & Intelligence")
     ]
     for name, reg in team_members_info:
         p = rtf.add_paragraph()

@@ -636,29 +636,100 @@ export default function DocumentationView({ language, t }: DocumentationViewProp
             </div>
 
             {/* Team Roster */}
-            <div className="space-y-2 pt-2">
-              <h3 className="font-bold text-app-text text-xs uppercase tracking-wide">
-                Team D43M0N$ — IEEE VIT Bhopal Hackathon 2026
-              </h3>
+            <div className="space-y-3 pt-2">
+              <div className="flex items-center justify-between">
+                <h3 className="font-bold text-app-text text-xs uppercase tracking-wide">
+                  Team D43M0N$ — IEEE VIT Bhopal Hackathon 2026
+                </h3>
+                <span className="text-[10px] font-mono text-app-muted">Track 04 · Problem 04.1</span>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div className="p-3.5 rounded-xl bg-app-surface-subtle border border-app-border space-y-1">
-                  <span className="font-bold text-app-text text-xs">Mangal Nath Yadav</span>
-                  <p className="text-[11px] font-mono text-app-muted">Reg No: 26BHI10047</p>
+                {/* Author */}
+                <div className="p-3.5 rounded-xl bg-emerald-500/5 border border-emerald-500/20 space-y-1.5 relative overflow-hidden">
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-app-text text-xs">Yash Raj Kushwaha</span>
+                    <span className="text-[9px] font-mono uppercase font-bold px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-600 border border-emerald-500/20">
+                      Author & Lead
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-[11px] font-mono">
+                    <span className="text-app-muted">Reg: 26BCE10122</span>
+                    <a
+                      href="https://github.com/YashRaj-Kushwaha"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-emerald-600 hover:underline inline-flex items-center space-x-1"
+                    >
+                      <span>@YashRaj-Kushwaha</span>
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-app-surface-subtle border border-app-border space-y-1">
-                  <span className="font-bold text-app-text text-xs">Aastik Tripathi</span>
-                  <p className="text-[11px] font-mono text-app-muted">Reg No: 26BCY10090</p>
+                {/* Contributor: Aastik */}
+                <div className="p-3.5 rounded-xl bg-app-surface-subtle border border-app-border space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-app-text text-xs">Aastik Tripathi</span>
+                    <span className="text-[9px] font-mono uppercase font-bold px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-600 border border-blue-500/20">
+                      Contributor
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-[11px] font-mono">
+                    <span className="text-app-muted">Reg: 26BCY10090</span>
+                    <a
+                      href="https://github.com/DarkDevil811"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-app-accent hover:underline inline-flex items-center space-x-1"
+                    >
+                      <span>@DarkDevil811</span>
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-app-surface-subtle border border-app-border space-y-1">
-                  <span className="font-bold text-app-text text-xs">Yash Raj Kushwaha</span>
-                  <p className="text-[11px] font-mono text-app-muted">Reg No: 26BCE10122</p>
+                {/* Contributor: Mangal */}
+                <div className="p-3.5 rounded-xl bg-app-surface-subtle border border-app-border space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-app-text text-xs">Mangal Nath Yadav</span>
+                    <span className="text-[9px] font-mono uppercase font-bold px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-600 border border-amber-500/20">
+                      Contributor
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-[11px] font-mono">
+                    <span className="text-app-muted">Reg: 26BHI10047</span>
+                    <a
+                      href="https://github.com/shadowXg"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-app-accent hover:underline inline-flex items-center space-x-1"
+                    >
+                      <span>@shadowXg</span>
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-app-surface-subtle border border-app-border space-y-1">
-                  <span className="font-bold text-app-text text-xs">Palak Kalra</span>
-                  <p className="text-[11px] font-mono text-app-muted">Reg No: 26BCY10001</p>
+                {/* Contributor: Palak */}
+                <div className="p-3.5 rounded-xl bg-app-surface-subtle border border-app-border space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-app-text text-xs">Palak Kalra</span>
+                    <span className="text-[9px] font-mono uppercase font-bold px-1.5 py-0.5 rounded bg-purple-500/10 text-purple-600 border border-purple-500/20">
+                      Contributor
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-[11px] font-mono">
+                    <span className="text-app-muted">Reg: 26BCY10001</span>
+                    <a
+                      href="https://github.com/palak-kalra-gtihub"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-app-accent hover:underline inline-flex items-center space-x-1"
+                    >
+                      <span>@palak-kalra-gtihub</span>
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

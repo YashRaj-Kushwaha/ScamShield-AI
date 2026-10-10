@@ -3,10 +3,10 @@
 > **IEEE VIT Bhopal Hackathon 2026 · Build Beyond Boundaries**  
 > **Track 04 · CYBERSECURITY: Problem Statement 04.1 ("The Scam That Almost Worked")**  
 > **Engineering Team: D43M0N$**  
-> - **Aastik Tripathi** (26BCY10090)  
-> - **Palak Kalra** (26BCY10001)  
-> - **Yash Raj Kushwaha** (26BCE10122)  
-> - **Mangal Nath Yadav** (26BHI10047)  
+> - **Author & Lead Architect:** [Yash Raj Kushwaha (@YashRaj-Kushwaha)](https://github.com/YashRaj-Kushwaha) — `26BCE10122`  
+> - **Contributor:** [Aastik Tripathi (@DarkDevil811)](https://github.com/DarkDevil811) — `26BCY10090`  
+> - **Contributor:** [Mangal Nath Yadav (@shadowXg)](https://github.com/shadowXg) — `26BHI10047`  
+> - **Contributor:** [Palak Kalra (@palak-kalra-gtihub)](https://github.com/palak-kalra-gtihub) — `26BCY10001`  
 
 ---
 

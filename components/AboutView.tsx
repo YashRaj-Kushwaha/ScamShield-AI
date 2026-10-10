@@ -149,7 +149,20 @@ export default function AboutView({ language, t }: AboutViewProps) {
                     <GraduationCap className="h-3.5 w-3.5 text-app-accent" />
                     <span>Reg: <strong className="text-app-text">{member.regNo}</strong></span>
                   </div>
-                  <span>VIT Bhopal</span>
+                  {member.githubUsername ? (
+                    <a
+                      href={member.githubUrl || `https://github.com/${member.githubUsername}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-1 text-app-accent hover:underline font-semibold"
+                      title={`View ${member.name}'s GitHub Profile`}
+                    >
+                      <span>@{member.githubUsername}</span>
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  ) : (
+                    <span>VIT Bhopal</span>
+                  )}
                 </div>
               </div>
             </div>

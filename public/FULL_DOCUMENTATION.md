@@ -19,7 +19,7 @@
 9. [Benchmark Results (98% Accuracy)](#9-benchmark-results-98-accuracy)
 10. [How to Run the App](#10-how-to-run-the-app)
 11. [Indian Legal Framework & Helplines](#11-indian-legal-framework--helplines)
-12. [Team Members](#12-team-members)
+12. [Authors & Contributors](#12-authors--contributors)
 13. [Glossary for Beginners](#13-glossary-for-beginners)
 
 ---
@@ -534,14 +534,34 @@ The app comes pre-configured with Firebase credentials in [firebase.ts](file:///
 
 ---
 
-## 12. Team Members
+## 12. Authors & Contributors
 
-| Name | Enrollment |
-|------|-----------|
-| **Aastik Tripathi** | 26BCY10090 |
-| **Palak Kalra** | 26BCY10001 |
-| **Yash Raj Kushwaha** | 26BCE10122 |
-| **Mangal Nath Yadav** | 26BHI10047 |
+### Author & Lead Architect
+* **Yash Raj Kushwaha** ([@YashRaj-Kushwaha](https://github.com/YashRaj-Kushwaha))
+  * **Role**: Primary Author, System Architect & Full-Stack Lead
+  * **Enrollment**: `26BCE10122`
+  * **Key Contributions**: Next.js 15 application architecture, Multi-Vector Zero-Trust threat scoring engine, Google Gemini AI Phishing Advisor integration, Firebase Realtime Database telemetry, live broadcast alerts, dynamic admin panel, and responsive UI/UX design.
+
+### Project Contributors
+* **Aastik Tripathi** ([@DarkDevil811](https://github.com/DarkDevil811))
+  * **Role**: Contributor — Security Architecture & Threat Heuristics
+  * **Enrollment**: `26BCY10090`
+  * **Key Contributions**: Cyrillic homograph character detection, mathematical threat weighting algorithms, and Zero-Trust heuristic rules.
+* **Mangal Nath Yadav** ([@shadowXg](https://github.com/shadowXg))
+  * **Role**: Contributor — UPI & QR Protocol Security
+  * **Enrollment**: `26BHI10047`
+  * **Key Contributions**: UPI intent URI reverse-charge inspection, client-side QR barcode image matrix decoding, and malicious VPA pattern matching.
+* **Palak Kalra** ([@palak-kalra-gtihub](https://github.com/palak-kalra-gtihub))
+  * **Role**: Contributor — NLP & Linguistic Intelligence
+  * **Enrollment**: `26BCY10001`
+  * **Key Contributions**: Multilingual psychological urgency analysis (English, Hindi देवनागरी, Hinglish), panic modeling, and cybercrime intelligence reporting.
+
+| Role | Name | GitHub Profile | Enrollment | Focus Area |
+|:---:|:---|:---:|:---:|:---|
+| 👑 **Author** | **Yash Raj Kushwaha** | [@YashRaj-Kushwaha](https://github.com/YashRaj-Kushwaha) | `26BCE10122` | Core Architecture, Next.js 15, Gemini AI, Firebase DB |
+| 🛡️ **Contributor** | **Aastik Tripathi** | [@DarkDevil811](https://github.com/DarkDevil811) | `26BCY10090` | Security Architecture, Homograph Detection, Threat Scoring |
+| 🔍 **Contributor** | **Mangal Nath Yadav** | [@shadowXg](https://github.com/shadowXg) | `26BHI10047` | UPI & QR Protocol Parsing, Reverse Charges, OCR Pipeline |
+| ⚖️ **Contributor** | **Palak Kalra** | [@palak-kalra-gtihub](https://github.com/palak-kalra-gtihub) | `26BCY10001` | Multilingual NLP, Social Engineering & Panic Detection |
 
 ---
 

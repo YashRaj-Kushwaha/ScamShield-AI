@@ -2,6 +2,24 @@
   "name": "scamshield-ai",
   "version": "1.0.0",
   "private": true,
+  "author": {
+    "name": "YashRaj-Kushwaha",
+    "url": "https://github.com/YashRaj-Kushwaha"
+  },
+  "contributors": [
+    {
+      "name": "Aastik Tripathi",
+      "url": "https://github.com/DarkDevil811"
+    },
+    {
+      "name": "Mangal Nath Yadav",
+      "url": "https://github.com/shadowXg"
+    },
+    {
+      "name": "Palak Kalra",
+      "url": "https://github.com/palak-kalra-gtihub"
+    }
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",

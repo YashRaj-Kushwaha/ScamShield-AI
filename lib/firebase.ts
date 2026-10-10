@@ -975,6 +975,9 @@ export interface EditableTeamMember {
   initials: string;
   avatarBg: string;
   bio?: string;
+  githubUsername?: string;
+  githubUrl?: string;
+  roleType?: "Author" | "Contributor";
 }
 
 export interface WebAppSiteConfig {
@@ -991,34 +994,52 @@ export interface WebAppSiteConfig {
 
 export const DEFAULT_TEAM_MEMBERS: EditableTeamMember[] = [
   {
-    id: "mangal",
-    name: "Mangal Nath Yadav",
-    regNo: "26BHI10047",
-    badge: "Team Lead",
-    badgeColor: "bg-amber-500/10 text-amber-600 border-amber-500/20",
-    avatarBg: "from-amber-500 via-orange-500 to-amber-600",
-    initials: "MY"
+    id: "yashraj",
+    name: "Yash Raj Kushwaha",
+    regNo: "26BCE10122",
+    badge: "Author",
+    badgeColor: "bg-emerald-500/10 text-emerald-600 border-emerald-500/20",
+    avatarBg: "from-emerald-600 to-teal-600",
+    initials: "YK",
+    githubUsername: "YashRaj-Kushwaha",
+    githubUrl: "https://github.com/YashRaj-Kushwaha",
+    roleType: "Author"
   },
   {
     id: "aastik",
     name: "Aastik Tripathi",
     regNo: "26BCY10090",
+    badge: "Contributor",
+    badgeColor: "bg-blue-500/10 text-blue-600 border-blue-500/20",
     avatarBg: "from-blue-600 to-indigo-600",
-    initials: "AT"
+    initials: "AT",
+    githubUsername: "DarkDevil811",
+    githubUrl: "https://github.com/DarkDevil811",
+    roleType: "Contributor"
+  },
+  {
+    id: "mangal",
+    name: "Mangal Nath Yadav",
+    regNo: "26BHI10047",
+    badge: "Contributor",
+    badgeColor: "bg-amber-500/10 text-amber-600 border-amber-500/20",
+    avatarBg: "from-amber-500 via-orange-500 to-amber-600",
+    initials: "MY",
+    githubUsername: "shadowXg",
+    githubUrl: "https://github.com/shadowXg",
+    roleType: "Contributor"
   },
   {
     id: "palak",
     name: "Palak Kalra",
     regNo: "26BCY10001",
+    badge: "Contributor",
+    badgeColor: "bg-purple-500/10 text-purple-600 border-purple-500/20",
     avatarBg: "from-purple-600 to-pink-600",
-    initials: "PK"
-  },
-  {
-    id: "yashraj",
-    name: "Yash Raj Kushwaha",
-    regNo: "26BCE10122",
-    avatarBg: "from-emerald-600 to-teal-600",
-    initials: "YK"
+    initials: "PK",
+    githubUsername: "palak-kalra-gtihub",
+    githubUrl: "https://github.com/palak-kalra-gtihub",
+    roleType: "Contributor"
   }
 ];
 
